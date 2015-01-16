@@ -7,7 +7,7 @@
     <display-name>lollipop</display-name>
     
     <context-param>
-        <param-name>boot.applicationConfiguration</param-name>
+        <param-name>applicationConfiguration</param-name>
         <param-value>/boot/xml/foundation.xml;/boot/xml/services.xml;/boot/xml/ws.xml</param-value>
     </context-param>
     
