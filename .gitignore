@@ -1,0 +1,37 @@
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+### Eclipse template
+.classpath
+.project
+.settings/
+
+### Intellij files
+.idea/
+*.iml
+
+### Temp files template
+*.bak
+**/abak
+**/ubak
+
+### Java template
+*.class
+
+### Package Files
+*.jar
+*.war
+*.ear
+
+### Application server files
+src/main/webapp/WEB-INF/classes/
+src/main/webapp/WEB-INF/lib/
+out/
+web/
+
+
