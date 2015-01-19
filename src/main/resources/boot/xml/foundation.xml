@@ -32,6 +32,7 @@
 		<component api="RestManager" class="io.vertigo.vega.impl.rest.RestManagerImpl">
 			<plugin class="io.vertigo.vega.plugins.rest.instrospector.annotations.AnnotationsEndPointIntrospectorPlugin" />
 		</component>
+		<component class="io.vertigo.vega.impl.rest.filter.CorsAllowerFilter"/>
 		<component class="io.vertigo.vega.impl.rest.handler.RateLimitingHandler">
 			<param name="windowSeconds" value="20" />
 			<param name="limitValue" value="100" />
