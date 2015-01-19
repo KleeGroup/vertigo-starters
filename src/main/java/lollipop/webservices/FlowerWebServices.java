@@ -1,4 +1,4 @@
-package lollipop.ws;
+package lollipop.webservices;
 
 import io.vertigo.vega.rest.RestfulService;
 import io.vertigo.vega.rest.stereotype.AnonymousAccessAllowed;
@@ -14,7 +14,7 @@ import lollipop.domain.Flower;
 import lollipop.services.FlowerServices;
 
 @PathPrefix("/flowers")
-public class WsFlower implements RestfulService {
+public class FlowerWebServices implements RestfulService {
 	@Inject
 	private FlowerServices flowerServices;
 

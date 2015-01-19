@@ -8,7 +8,7 @@
     
     <context-param>
         <param-name>applicationConfiguration</param-name>
-        <param-value>/boot/xml/foundation.xml;/boot/xml/services.xml;/boot/xml/ws.xml</param-value>
+        <param-value>/boot/xml/foundation.xml;/boot/xml/services.xml;/boot/xml/webservices.xml</param-value>
     </context-param>
     
     <listener>
