@@ -2,6 +2,7 @@
 <config>
 	<module name="knock-ws" inheritance="io.vertigo.vega.rest.RestfulService" api="false">
 		<component class="lollipop.webservices.FlowerWebServices" />
+		<component class="lollipop.webservices.commons.AlertWebServices" />
 		<component class="io.vertigo.vega.impl.rest.catalog.CatalogRestServices" />
 		<component class="io.vertigo.vega.impl.rest.catalog.SwaggerRestServices" />
 	</module>

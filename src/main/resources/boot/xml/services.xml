@@ -2,5 +2,6 @@
 <config>
 	<module name="knock-services">
 		<component api="FlowerServices" class="lollipop.services.FlowerServicesImpl" />
+		<component api="AlertServices" class="lollipop.services.commons.AlertServicesImpl" />
 	</module>
 </config>
