@@ -43,6 +43,7 @@ public final class AlertServicesImpl implements AlertServices {
 		Assertion.checkNotNull(alert);
 		//-----
 		final long id = nextId();
+		alert.setId(id);
 		alerts.put(id, alert);
 		return id;
 	}
