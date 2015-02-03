@@ -9,10 +9,11 @@
 	<name>lollipop</name>
 	
 	<properties>
-		<compileSource>1.7</compileSource>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<maven.test.error.ignore>true</maven.test.error.ignore>
-		<project.build.sourceEncoding>utf8</project.build.sourceEncoding>
 		<vertigo.version>0.7.2</vertigo.version>
 	</properties>
 
