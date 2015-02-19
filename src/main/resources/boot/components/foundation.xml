@@ -46,7 +46,7 @@
 	</module>
 
 	<module name="myApp">
-		<resource type="kpr" path="boot/application.kpr" />
+		<resource type="kpr" path="boot/definitions/application.kpr" />
 		<resource type="classes" path="lollipop.boot.DtDefinitions" />
 	</module>
 </config>
