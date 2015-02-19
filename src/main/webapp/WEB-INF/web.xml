@@ -6,9 +6,9 @@
 
     <display-name>lollipop</display-name>
     
-    <context-param>
-        <param-name>applicationConfiguration</param-name>
-        <param-value>/boot/components/foundation.xml;/boot/components/services.xml;/boot/components/webservices.xml</param-value>
+     <context-param>
+        <param-name>boot.applicationConfiguration</param-name>
+        <param-value>/boot/components/foundations.xml;/boot/components/services.xml;/boot/components/webservices.xml</param-value>
     </context-param>
     
     <listener>

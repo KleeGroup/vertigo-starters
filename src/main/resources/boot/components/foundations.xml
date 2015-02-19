@@ -1,0 +1,52 @@
+<?xml version =	'1.0' encoding = 'ISO-8859-1'?>
+<config>
+	<module name="vertigo-commons">
+		<component api="ResourceManager" class="io.vertigo.commons.impl.resource.ResourceManagerImpl">
+			<plugin class="io.vertigo.commons.plugins.resource.java.ClassPathResourceResolverPlugin" />
+		</component>
+		<component api="LocaleManager" class="io.vertigoimpl.commons.locale.LocaleManagerImpl">
+			<param name="locales" value="fr_FR" />
+		</component>
+	</module>
+	<module name="vertigo-dynamo">
+		<component api="CollectionsManager" class="io.vertigo.dynamo.impl.collections.CollectionsManagerImpl" />
+		<component api="KVDataStoreManager" class="io.vertigo.dynamo.impl.kvdatastore.KVDataStoreManagerImpl">
+			<plugin class="io.vertigo.dynamo.plugins.kvdatastore.delayedmemory.DelayedMemoryKVDataStorePlugin">
+				<param name="dataStoreName" value="lollipop-tokens" />
+				<param name="timeToLiveSeconds" value="120" />
+			</plugin>
+		</component>
+	</module>
+	<module name="vertigo-persona">	
+		<component api="KSecurityManager" class="io.vertigo.persona.impl.security.KSecurityManagerImpl">
+			<param name="userSessionClassName" value="lollipop.user.LollipopUserSession" />
+			<plugin class="io.vertigo.persona.plugins.security.loaders.SecurityResourceLoaderPlugin" />
+		</component>
+	</module>
+
+	<module name="vertigo-vega" api="false" inheritance="java.lang.Object">
+		<component class="io.vertigo.vega.impl.rest.handler.CorsAllowerHandler"/>
+		<component api="RestManager" class="io.vertigo.vega.impl.rest.RestManagerImpl">
+			<plugin class="io.vertigo.vega.plugins.rest.instrospector.annotations.AnnotationsEndPointIntrospectorPlugin" />
+		</component>
+		<component class="io.vertigo.vega.impl.rest.handler.RateLimitingHandler">
+			<param name="windowSeconds" value="20" />
+			<param name="limitValue" value="100" />
+		</component>
+		<component api="TokenManager" class="io.vertigo.vega.impl.token.TokenManagerImpl">
+			<param name="dataStoreName" value="lollipop-tokens" />
+		</component>
+	</module>
+ 
+	<module name="lollipop-boot">
+		<component api="EnvironmentManager" class="io.vertigo.dynamo.impl.environment.EnvironmentManagerImpl">
+			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.kpr.KprLoaderPlugin" />
+			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.java.AnnotationLoaderPlugin" />
+			<plugin class="io.vertigo.dynamo.plugins.environment.registries.domain.DomainDynamicRegistryPlugin" />
+		</component>
+	</module>	
+	<module name="lollipop-boot-resources">
+		<resource type="kpr" path="boot/definitions/application.kpr" />
+		<resource type="classes" path="lollipop.boot.DtDefinitions" />
+	</module>
+</config>
