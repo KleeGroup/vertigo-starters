@@ -1,4 +1,4 @@
-package lollipop.webservices;
+package lollipop.webservices.movies;
 
 import io.vertigo.vega.rest.RestfulService;
 import io.vertigo.vega.rest.stereotype.AnonymousAccessAllowed;
@@ -10,18 +10,18 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import lollipop.domain.Flower;
-import lollipop.services.FlowerServices;
+import lollipop.domain.movies.Movie;
+import lollipop.services.movies.MovieServices;
 
-@PathPrefix("/flowers")
-public class FlowerWebServices implements RestfulService {
+@PathPrefix("/movies")
+public class MovieWebServices implements RestfulService {
 	@Inject
-	private FlowerServices flowerServices;
+	private MovieServices movieServices;
 
 	@GET("/{id}")
 	@AnonymousAccessAllowed
 	public String helloWorldWithNumber(@PathParam("id") final int id) {
-		return flowerServices.getFlowers().get(id).getName();
+		return movieServices.getAllMovies().get(id).getName();
 	}
 
 	//
@@ -33,8 +33,8 @@ public class FlowerWebServices implements RestfulService {
 
 	@AnonymousAccessAllowed
 	@GET("/")
-	public List<Flower> getFlowers() {
-		return flowerServices.getFlowers();
+	public List<Movie> getAllMovies() {
+		return movieServices.getAllMovies();
 	}
 
 }

@@ -14,8 +14,13 @@ create Formatter FMT_DEFAULT{
 /**************************************************************************************************/
 /********************************* Domains ********************************************************/
 /**************************************************************************************************/
-create Domain DO_STRING {
+create Domain DO_NAME {
 	dataType : String
+	formatter : FMT_DEFAULT
+}
+
+create Domain DO_YEAR {
+	dataType : Integer
 	formatter : FMT_DEFAULT
 }
 

@@ -1,7 +1,6 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
 	<module name="lollipop-services">
-		<component api="FlowerServices" class="lollipop.services.FlowerServicesImpl" />
-		<component api="AlertServices" class="lollipop.services.commons.AlertServicesImpl" />
+		<component api="MovieServices" class="lollipop.services.movies.MovieServicesImpl" />
 	</module>
 </config>

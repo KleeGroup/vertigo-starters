@@ -21,15 +21,13 @@ package lollipop.boot;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import lollipop.domain.Flower;
-import lollipop.domain.commons.Alert;
+import lollipop.domain.movies.Movie;
 
 public final class DtDefinitions implements Iterable<Class<?>> {
 	@Override
 	public Iterator<Class<?>> iterator() {
 		return Arrays.asList(new Class<?>[] {
-				Flower.class,
-				Alert.class,
+				Movie.class
 		}).iterator();
 	}
 }
