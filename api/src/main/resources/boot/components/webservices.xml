@@ -1,8 +1,8 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
-	<module name="knock-ws" inheritance="io.vertigo.vega.rest.RestfulService" api="false">
+	<module name="knock-ws" inheritance="io.vertigo.vega.webservice.WebServices" api="false">
 		<component class="lollipop.webservices.movies.MovieWebServices" />
-		<component class="io.vertigo.vega.impl.rest.catalog.CatalogRestServices" />
-		<component class="io.vertigo.vega.impl.rest.catalog.SwaggerRestServices" />
+		<component class="io.vertigo.vega.impl.webservice.catalog.CatalogWebServices" />
+		<component class="io.vertigo.vega.impl.webservice.catalog.SwaggerWebServices" />
 	</module>
 </config>

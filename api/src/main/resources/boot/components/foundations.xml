@@ -1,16 +1,40 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
-	<module name="vertigo-commons">
-		<component api="ResourceManager" class="io.vertigo.commons.impl.resource.ResourceManagerImpl">
+	<boot>
+		<component api="ResourceManager" class="io.vertigo.core.impl.resource.ResourceManagerImpl">
 			<plugin class="io.vertigo.commons.plugins.resource.java.ClassPathResourceResolverPlugin" />
 		</component>
-		<component api="LocaleManager" class="io.vertigo.commons.impl.locale.LocaleManagerImpl">
+		<component api="LocaleManager" class="io.vertigo.core.impl.locale.LocaleManagerImpl">
 			<param name="locales" value="fr_FR" />
 		</component>
+		<component api="EnvironmentManager" class="io.vertigo.core.impl.environment.EnvironmentManagerImpl">
+			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.kpr.KprLoaderPlugin" />
+			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.java.AnnotationLoaderPlugin" />
+			<plugin class="io.vertigo.dynamo.plugins.environment.registries.domain.DomainDynamicRegistryPlugin" />
+			<plugin class="io.vertigo.persona.plugins.security.loaders.SecurityResourceLoaderPlugin" />
+		</component>
+	</boot>
+
+	<module name="vertigo-commons">
+		<component api="DaemonManager" class="io.vertigo.commons.impl.daemon.DaemonManagerImpl"/>
+		<component api="AnalyticsManager" class="io.vertigo.commons.impl.analytics.AnalyticsManagerImpl" />
+		<component api="ScriptManager" class="io.vertigo.commons.impl.script.ScriptManagerImpl">
+			<plugin class="io.vertigo.commons.plugins.script.janino.JaninoExpressionEvaluatorPlugin" />
+		</component>
+		<component api="CodecManager" class="io.vertigo.commons.impl.codec.CodecManagerImpl" />
+		<component api="CacheManager" class="io.vertigo.commons.impl.cache.CacheManagerImpl">
+			<plugin class="io.vertigo.commons.plugins.cache.memory.MemoryCachePlugin" />
+		</component>
 	</module>
+
 	<module name="vertigo-dynamo">
 		<component api="CollectionsManager" class="io.vertigo.dynamo.impl.collections.CollectionsManagerImpl" />
-		<component api="KVDataStoreManager" class="io.vertigo.dynamo.impl.kvdatastore.KVDataStoreManagerImpl">
+		<component api="TaskManager" class="io.vertigo.dynamo.impl.task.TaskManagerImpl"/>
+		<component api="EventManager" class="io.vertigo.commons.impl.event.EventManagerImpl" />
+		<component api="StoreManager" class="io.vertigo.dynamo.impl.store.StoreManagerImpl">
+			<plugin class="io.vertigo.dynamo.plugins.store.datastore.hsql.HsqlDataStorePlugin">
+				<param name="sequencePrefix" value="SEQ_" />
+			</plugin>
 			<plugin class="io.vertigo.dynamo.plugins.kvdatastore.delayedmemory.DelayedMemoryKVDataStorePlugin">
 				<param name="dataStoreName" value="lollipop-tokens" />
 				<param name="timeToLiveSeconds" value="120" />
@@ -18,44 +42,40 @@
 		</component>
 	</module>
 	<module name="vertigo-persona">	
-		<component api="KSecurityManager" class="io.vertigo.persona.impl.security.KSecurityManagerImpl">
+		<component api="VSecurityManager" class="io.vertigo.persona.impl.security.VSecurityManagerImpl">
 			<param name="userSessionClassName" value="lollipop.user.LollipopUserSession" />
-			<plugin class="io.vertigo.persona.plugins.security.loaders.SecurityResourceLoaderPlugin" />
 		</component>
 	</module>
 
 	<module name="vertigo-vega" api="false" inheritance="java.lang.Object">
-		<component api="RestManager" class="io.vertigo.vega.impl.rest.RestManagerImpl">
-			<plugin class="io.vertigo.vega.plugins.rest.instrospector.annotations.AnnotationsEndPointIntrospectorPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.routesregister.sparkjava.SparkJavaRoutesRegisterPlugin" />
-			<!-- Handlers -->
-			<plugin class="io.vertigo.vega.plugins.rest.handler.ExceptionRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.CorsAllowerRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.SessionInvalidateRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.SessionRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.RateLimitingRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.SecurityRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.AccessTokenRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.JsonConverterRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.PaginatorAndSortRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.ValidatorRestHandlerPlugin" />
-			<plugin class="io.vertigo.vega.plugins.rest.handler.RestfulServiceRestHandlerPlugin" />
-		</component>
-		<component api="JsonEngine" class="io.vertigo.vega.rest.engine.GoogleJsonEngine"/>
-		<component api="TokenManager" class="io.vertigo.vega.impl.token.TokenManagerImpl">
-			<param name="dataStoreName" value="lollipop-tokens" />
-		</component>
+		<component api="WebServiceManager" class="io.vertigo.vega.impl.webservice.WebServiceManagerImpl">
+    	    <plugin class="io.vertigo.vega.plugins.webservice.instrospector.annotations.AnnotationsWebServiceIntrospectorPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.webserver.sparkjava.SparkJavaServletFilterWebServerPlugin" />
+    	    <!-- Handlers -->
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.ExceptionWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.AnalyticsWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.CorsAllowerWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.SessionInvalidateWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.SessionWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.RateLimitingWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.SecurityWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.AccessTokenWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.JsonConverterWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.PaginatorAndSortWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.PaginatorAndSortWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.ValidatorWebServiceHandlerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.handler.RestfulServiceWebServiceHandlerPlugin" />
+    	</component>
+    	<component api="JsonEngine" class="io.vertigo.vega.engines.webservice.json.GoogleJsonEngine"/>
+    	<component api="TokenManager" class="io.vertigo.vega.impl.token.TokenManagerImpl">
+    	    <param name="dataStoreName" value="lollipop-tokens" />
+    	</component>
 	</module>
- 
-	<module name="lollipop-boot">
-		<component api="EnvironmentManager" class="io.vertigo.dynamo.impl.environment.EnvironmentManagerImpl">
-			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.kpr.KprLoaderPlugin" />
-			<plugin class="io.vertigo.dynamo.plugins.environment.loaders.java.AnnotationLoaderPlugin" />
-			<plugin class="io.vertigo.dynamo.plugins.environment.registries.domain.DomainDynamicRegistryPlugin" />
-		</component>
-	</module>	
+	
 	<module name="lollipop-boot-resources">
-		<resource type="kpr" path="boot/definitions/application.kpr" />
-		<resource type="classes" path="lollipop.boot.DtDefinitions" />
+		<definitions>
+			<resource type="kpr" path="boot/definitions/application.kpr" />
+			<resource type="classes" path="lollipop.boot.DtDefinitions" />
+		</definitions>
 	</module>
 </config>

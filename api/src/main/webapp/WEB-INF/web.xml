@@ -11,22 +11,18 @@
         <param-value>/boot/components/foundations.xml;/boot/components/services.xml;/boot/components/webservices.xml</param-value>
     </context-param>
     
-    <listener>
-        <listener-class>io.vertigo.vega.impl.rest.servlet.ApplicationServletContextListener</listener-class>
-    </listener>
-
-    <filter>
-        <filter-name>SparkFilter</filter-name>
-        <filter-class>spark.servlet.SparkFilter</filter-class>
-        <init-param>
-            <param-name>applicationClass</param-name>
-            <param-value>io.vertigo.vega.plugins.rest.routesregister.sparkjava.VegaSparkApplication</param-value>
-        </init-param>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>SparkFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
+  <listener>
+    <listener-class>io.vertigo.vega.impl.webservice.servlet.AppServletContextListener</listener-class>
+  </listener>
+  
+  <filter>
+    <filter-name>SparkFilter</filter-name>
+    <filter-class>io.vertigo.vega.plugins.webservice.webserver.sparkjava.VegaSparkFilter</filter-class>    
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>SparkFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>

@@ -1,10 +1,10 @@
 package lollipop.webservices.movies;
 
-import io.vertigo.vega.rest.RestfulService;
-import io.vertigo.vega.rest.stereotype.AnonymousAccessAllowed;
-import io.vertigo.vega.rest.stereotype.GET;
-import io.vertigo.vega.rest.stereotype.PathParam;
-import io.vertigo.vega.rest.stereotype.PathPrefix;
+import io.vertigo.vega.webservice.WebServices;
+import io.vertigo.vega.webservice.stereotype.AnonymousAccessAllowed;
+import io.vertigo.vega.webservice.stereotype.GET;
+import io.vertigo.vega.webservice.stereotype.PathParam;
+import io.vertigo.vega.webservice.stereotype.PathPrefix;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import lollipop.domain.movies.Movie;
 import lollipop.services.movies.MovieServices;
 
 @PathPrefix("/movies")
-public class MovieWebServices implements RestfulService {
+public class MovieWebServices implements WebServices {
 	@Inject
 	private MovieServices movieServices;
 
