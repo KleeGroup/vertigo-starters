@@ -4,5 +4,6 @@
 		<component class="lollipop.webservices.movies.MovieWebServices" />
 		<component class="io.vertigo.vega.impl.webservice.catalog.CatalogWebServices" />
 		<component class="io.vertigo.vega.impl.webservice.catalog.SwaggerWebServices" />
+		<component class="io.vertigo.vega.engines.webservice.cmd.ComponentCmdWebServices"/>
 	</module>
 </config>

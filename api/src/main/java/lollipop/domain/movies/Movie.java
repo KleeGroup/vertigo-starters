@@ -17,7 +17,7 @@ public final class Movie implements DtObject {
 		this.year = year;
 	}
 
-	@Field(domain = "DO_IDENTITY", type = "PRIMARY_KEY", notNull = true, label = "id")
+	@Field(domain = "DO_IDENTITY", type = "PRIMARY_KEY", required = true, label = "id")
 	public final Long getId() {
 		return id;
 	}
