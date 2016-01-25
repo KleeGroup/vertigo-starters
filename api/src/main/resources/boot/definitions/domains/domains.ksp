@@ -95,7 +95,6 @@ create Domain DO_COMMENT {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_3000]
 	storeType : "VARCHAR(3000)"
-    indexType : "text_fr"
 }
 
 create Domain DO_LABEL_SHORT {
@@ -103,7 +102,6 @@ create Domain DO_LABEL_SHORT {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_50]
 	storeType : "VARCHAR(50)"
-    indexType : "text_fr"
 }
 
 create Domain DO_LABEL {
@@ -111,7 +109,6 @@ create Domain DO_LABEL {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_100]
 	storeType : "VARCHAR(100)"
-    indexType : "text_fr"
 }
 
 create Domain DO_LABEL_LONG {
@@ -119,14 +116,12 @@ create Domain DO_LABEL_LONG {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_250]
 	storeType : "VARCHAR(250)"
-    indexType : "text_fr"
 }
 
 create Domain DO_EMAIL {
 	dataType : String
 	formatter : FMT_DEFAULT
 	constraint : [CK_EMAIL, CK_MAX_LENGTH_150]
-	indexType: "string"
 	storeType : "VARCHAR(150)"
 }
 
@@ -135,7 +130,6 @@ create Domain DO_CODE {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_100]
 	storeType : "VARCHAR(100)"
-	indexType : "code"
 }
 
 create Domain DO_MULTI_VALUES_FIELD {
@@ -143,7 +137,6 @@ create Domain DO_MULTI_VALUES_FIELD {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_3000]
 	storeType : "VARCHAR(3000)"
-    indexType : "sep_pipe"
 }
 
 create Domain DO_NAME {
@@ -151,7 +144,6 @@ create Domain DO_NAME {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_50]
 	storeType : "VARCHAR(50)"
-    indexType : "text_fr"
 }
 
 create Domain DO_FIRSTNAME {
@@ -159,7 +151,6 @@ create Domain DO_FIRSTNAME {
 	formatter : FMT_DEFAULT
 	constraint : [CK_MAX_LENGTH_50]
 	storeType : "VARCHAR(50)"
-    indexType : "text_fr"
 }
 
 create Domain DO_PASSWORD {
@@ -173,19 +164,16 @@ create Domain DO_TEXT {
 	dataType : String
 	formatter : FMT_DEFAULT
 	storeType : "TEXT"
-    indexType : "text_fr"
 }
 
 create Domain DO_TEXT_NOT_ANALYZED {
 	dataType : String
 	formatter : FMT_DEFAULT
-    indexType : "sort_only"
 }
 
 create Domain DO_YES_NO {
 	dataType : Boolean
 	formatter : FMT_DEFAULT
-	indexType : "boolean"
 	storeType : "bool"
 }
 
