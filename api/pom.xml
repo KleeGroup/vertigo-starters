@@ -85,11 +85,11 @@
             <artifactId>vertigo-studio</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.vertigo</groupId>
-            <artifactId>vertigo-studio</artifactId>
-            <version>${vertigo.version}</version>
-        </dependency>
+	    <dependency>  
+		  <groupId>org.elasticsearch</groupId>
+		  <artifactId>elasticsearch</artifactId>
+		  <version>1.7.4</version>
+		</dependency>  
     </dependencies>
 
 	<build>

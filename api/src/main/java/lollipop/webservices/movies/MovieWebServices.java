@@ -1,8 +1,12 @@
 package lollipop.webservices.movies;
 
+import io.vertigo.dynamo.collections.model.FacetedQueryResult;
+import io.vertigo.vega.engines.webservice.json.UiSelectedFacets;
 import io.vertigo.vega.webservice.WebServices;
 import io.vertigo.vega.webservice.model.UiListState;
 import io.vertigo.vega.webservice.stereotype.GET;
+import io.vertigo.vega.webservice.stereotype.InnerBodyParam;
+import io.vertigo.vega.webservice.stereotype.POST;
 import io.vertigo.vega.webservice.stereotype.PathParam;
 import io.vertigo.vega.webservice.stereotype.PathPrefix;
 
@@ -26,6 +30,12 @@ public class MovieWebServices implements WebServices {
 	@GET("/")
 	public List<Movie> getMovies(final UiListState uiListState) {
 		return movieServices.getMovies(uiListState.toDtListState());
+	}
+
+	@POST("/search")
+	public FacetedQueryResult search(@InnerBodyParam("criteria") final String criteria,
+			@InnerBodyParam("facets") final UiSelectedFacets uiSelectedFacets, final UiListState uiListState) {
+		return movieServices.searchMovies(criteria, uiSelectedFacets.toListFilters(), uiListState.toDtListState());
 	}
 
 }

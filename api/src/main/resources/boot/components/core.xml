@@ -6,6 +6,8 @@
 		<plugin class="io.vertigo.dynamo.plugins.environment.loaders.java.AnnotationLoaderPlugin" />
 		<plugin class="io.vertigo.dynamo.plugins.environment.registries.domain.DomainDynamicRegistryPlugin" />
 		<plugin class="io.vertigo.persona.plugins.security.loaders.SecurityResourceLoaderPlugin" />
+	    <plugin class="io.vertigo.dynamo.plugins.environment.registries.task.TaskDynamicRegistryPlugin" />
+	    <plugin class="io.vertigo.dynamo.plugins.environment.registries.search.SearchDynamicRegistryPlugin" />
 	</boot>
 
 	<module name="vertigo-commons">
@@ -42,6 +44,14 @@
 			<plugin class="io.vertigo.dynamo.plugins.kvstore.delayedmemory.DelayedMemoryKVStorePlugin">
 				<param name="collections" value="lollipop-tokens" />
 				<param name="timeToLiveSeconds" value="120" />
+			</plugin>
+		</component>
+		
+		<component api="SearchManager" class="io.vertigo.dynamo.impl.search.SearchManagerImpl">
+			<plugin class="io.vertigo.dynamo.plugins.search.elasticsearch.embedded.ESEmbeddedSearchServicesPlugin">
+				<param name="home" value="io/vertigo/dynamo/search/serverelastic" />
+				<param name="envIndex" value="TU_TEST" />
+				<param name="rowsPerQuery" value="50" />
 			</plugin>
 		</component>
 	</module>
