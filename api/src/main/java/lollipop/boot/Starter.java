@@ -13,9 +13,14 @@ public final class Starter {
 		context.setResourceBase("src/main/webapp");
 		context.setContextPath("/");
 		context.setParentLoaderPriority(true);
+		context.setThrowUnavailableOnStartupException(true);
 		server.setHandler(context);
 
-		server.start();
-		server.join();
+		try {
+			server.start();
+			server.join();
+		} finally {
+			server.stop();
+		}
 	}
 }

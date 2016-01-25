@@ -17,6 +17,8 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 			ApplicationUser(lollipop.domain.users.ApplicationUser.class),
 			/** Objet de données Casting. */
 			Casting(lollipop.domain.people.Casting.class),
+			/** Objet de données Dummy. */
+			Dummy(lollipop.domain.search.Dummy.class),
 			/** Objet de données Movie. */
 			Movie(lollipop.domain.movies.Movie.class),
 			/** Objet de données People. */
@@ -71,6 +73,14 @@ public final class DtDefinitions implements Iterable<Class<?>> {
 		PEO_ID,
 		/** Propriété 'Movie'. */
 		MOV_ID,
+	}
+
+	/**
+	 * Enumération des champs de Dummy.
+	 */
+	public enum DummyFields implements DtFieldName {
+		/** Propriété 'Id'. */
+		DUMMY_LONG,
 	}
 
 	/**
