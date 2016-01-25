@@ -14,10 +14,27 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<maven.test.error.ignore>true</maven.test.error.ignore>
-		<vertigo.version>0.8.3-SNAPSHOT</vertigo.version>
+		<vertigo.version>0.9.1-SNAPSHOT</vertigo.version>
 	</properties>
 
     <dependencies>
+    	<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<!-- Connections Pool -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.191</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5.2</version>
+		</dependency>
+		
         <dependency>
             <groupId>io.vertigo</groupId>
             <artifactId>vertigo-core</artifactId>
@@ -63,15 +80,25 @@
             <artifactId>vertigo-vega-impl</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vertigo</groupId>
+            <artifactId>vertigo-studio</artifactId>
+            <version>${vertigo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertigo</groupId>
+            <artifactId>vertigo-studio</artifactId>
+            <version>${vertigo.version}</version>
+        </dependency>
     </dependencies>
 
 	<build>
 		<plugins>
-			<plugin><!-- Copie des dÃ©pendances avant la gÃ©nÃ©ration. -->
+			<plugin> 
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.1</version>
-				<!-- <executions>
+				<executions>
 					<execution>
 						<id>copy-dependencies</id>
 						<phase>generate-sources</phase>
@@ -88,23 +115,23 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/main/javagen</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions> -->
-			</plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<version>1.7</version>
+			<executions>
+				<execution>
+					<phase>generate-sources</phase>
+					<goals>
+						<goal>add-source</goal>
+					</goals>
+					<configuration>
+						<sources>
+							<source>src/main/javagen</source>
+						</sources>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
 			
 		</plugins>
 	</build>

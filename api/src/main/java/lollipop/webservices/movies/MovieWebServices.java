@@ -1,6 +1,7 @@
 package lollipop.webservices.movies;
 
 import io.vertigo.vega.webservice.WebServices;
+import io.vertigo.vega.webservice.model.UiListState;
 import io.vertigo.vega.webservice.stereotype.AnonymousAccessAllowed;
 import io.vertigo.vega.webservice.stereotype.GET;
 import io.vertigo.vega.webservice.stereotype.PathParam;
@@ -20,21 +21,14 @@ public class MovieWebServices implements WebServices {
 
 	@GET("/{id}")
 	@AnonymousAccessAllowed
-	public String helloWorldWithNumber(@PathParam("id") final int id) {
-		return movieServices.getAllMovies().get(id).getName();
+	public Movie getMovie(@PathParam("id") final long id) {
+		return movieServices.get(id);
 	}
-
-	//
-	//	@GET("/index")
-	//	@AnonymousAccessAllowed
-	//	public String helloWorld() {
-	//		return "Hello world";
-	//	}
 
 	@AnonymousAccessAllowed
 	@GET("/")
-	public List<Movie> getAllMovies() {
-		return movieServices.getAllMovies();
+	public List<Movie> getMovies(final UiListState uiListState) {
+		return movieServices.getMovies(uiListState.toDtListState());
 	}
 
 }

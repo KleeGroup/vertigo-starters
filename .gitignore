@@ -30,7 +30,7 @@ release.properties
 
 ### Application server files
 src/main/webapp/WEB-INF/classes/
-src/main/webapp/WEB-INF/lib/
+api/src/main/webapp/WEB-INF/classes/
 out/
 web/
 

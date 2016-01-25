@@ -1,9 +1,7 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
-	<module name="knock-ws" inheritance="io.vertigo.vega.webservice.WebServices" api="false">
+	<module name="lollipop-ws" api="false">
 		<component class="lollipop.webservices.movies.MovieWebServices" />
-		<component class="io.vertigo.vega.impl.webservice.catalog.CatalogWebServices" />
 		<component class="io.vertigo.vega.impl.webservice.catalog.SwaggerWebServices" />
-		<component class="io.vertigo.vega.engines.webservice.cmd.ComponentCmdWebServices"/>
 	</module>
 </config>
