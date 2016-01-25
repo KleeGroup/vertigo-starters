@@ -1,7 +1,9 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
 	<module name="lollipop-ws" api="false">
-		<component class="lollipop.webservices.movies.MovieWebServices" />
 		<component class="io.vertigo.vega.impl.webservice.catalog.SwaggerWebServices" />
+		
+		<component class="lollipop.webservices.movies.MovieWebServices" />
+		<component class="lollipop.webservices.users.UserWebServices" />
 	</module>
 </config>

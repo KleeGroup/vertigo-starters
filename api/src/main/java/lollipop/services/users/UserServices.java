@@ -1,9 +1,10 @@
 package lollipop.services.users;
 
 import io.vertigo.lang.Component;
+import lollipop.domain.users.ApplicationUser;
 
 public interface UserServices extends Component {
 
-	void loginUser(String login);
+	ApplicationUser loginUser(final String login, final String password);
 
 }
