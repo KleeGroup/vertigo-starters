@@ -14,7 +14,8 @@
 	</module>
 	
 	<init>
-		<initializer class="lollipop.boot.StoreManagerInitializer"/>
+		<initializer class="lollipop.boot.DataBaseInitializer"/>
+		<initializer class="lollipop.boot.MasterDataInitializer"/>
 	</init>
 	
 </config>
