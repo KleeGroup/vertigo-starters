@@ -49,7 +49,7 @@
 		
 		<component api="SearchManager" class="io.vertigo.dynamo.impl.search.SearchManagerImpl">
 			<plugin class="io.vertigo.dynamo.plugins.search.elasticsearch.embedded.ESEmbeddedSearchServicesPlugin">
-				<param name="home" value="io/vertigo/dynamo/search/serverelastic" />
+				<param name="home" value="search/" />
 				<param name="envIndex" value="TU_TEST" />
 				<param name="rowsPerQuery" value="50" />
 			</plugin>
