@@ -32,7 +32,7 @@ public final class PeopleDAO extends DAOBroker<People, java.lang.Long> implement
 	 * @return KeyConcept à modifier
 	 */
 	 public People loadForUpdate(final URI<People> uri) {
-		return dataStore.loadForUpdate(uri);
+		return dataStore.readForUpdate(uri);
 	}
 
 	/**

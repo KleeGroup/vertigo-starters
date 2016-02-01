@@ -32,7 +32,7 @@ public final class MovieDAO extends DAOBroker<Movie, java.lang.Long> implements 
 	 * @return KeyConcept à modifier
 	 */
 	 public Movie loadForUpdate(final URI<Movie> uri) {
-		return dataStore.loadForUpdate(uri);
+		return dataStore.readForUpdate(uri);
 	}
 
 	/**
