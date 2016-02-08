@@ -31,7 +31,7 @@ public final class MovieDAO extends DAOBroker<Movie, java.lang.Long> implements 
 	 * @param uri URI du keyConcept modifié
 	 * @return KeyConcept à modifier
 	 */
-	 public Movie loadForUpdate(final URI<Movie> uri) {
+	 public Movie readForUpdate(final URI<Movie> uri) {
 		return dataStore.readForUpdate(uri);
 	}
 
@@ -42,8 +42,8 @@ public final class MovieDAO extends DAOBroker<Movie, java.lang.Long> implements 
 	 * @param id Clé du keyConcept modifié
 	 * @return KeyConcept à modifier
 	 */
-	 public Movie loadForUpdate(final java.lang.Long id) {
-		return loadForUpdate(createDtObjectURI(id));
+	 public Movie readForUpdate(final java.lang.Long id) {
+		return readForUpdate(createDtObjectURI(id));
 	}
 	
 

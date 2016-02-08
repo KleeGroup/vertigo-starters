@@ -8,6 +8,8 @@ import io.vertigo.core.spaces.component.ComponentInitializer;
 
 import javax.inject.Inject;
 
+import lollipop.services.users.UserResources;
+
 /**
  * Init ressources.
  * @author npiedeloup
@@ -20,7 +22,7 @@ public class I18nResourcesInitializer implements ComponentInitializer {
 	/** {@inheritDoc} */
 	@Override
 	public void init() {
-		localeManager.add(UserRessources.class.getName(), UserRessources.values());
+		localeManager.add(UserResources.class.getName(), UserResources.values());
 	}
 
 }
