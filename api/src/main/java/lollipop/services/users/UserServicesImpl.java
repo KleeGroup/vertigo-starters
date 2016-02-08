@@ -21,7 +21,7 @@ public class UserServicesImpl implements UserServices {
 	public ApplicationUser loginUser(final String login, final String password) {
 		//mock login User
 		if (login.isEmpty() || password.isEmpty() || login.startsWith(password) || password.startsWith(login)) {
-			throw new VUserException(new MessageText(UserRessources.INVALID_CREDENTIALS));
+			throw new VUserException(new MessageText(UserResources.INVALID_CREDENTIALS));
 		}
 
 		final ApplicationUser applicationUser = new ApplicationUser();

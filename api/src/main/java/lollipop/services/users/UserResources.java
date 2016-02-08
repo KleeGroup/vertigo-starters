@@ -7,7 +7,7 @@ import io.vertigo.lang.MessageKey;
  *
  * @author  npiedeloup
  */
-public enum UserRessources implements MessageKey {
+public enum UserResources implements MessageKey {
 	/**
 	 * Échec de la connexion : nom d'utilisateur inconnu ou mot de passe incorrect.
 	 */

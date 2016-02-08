@@ -31,8 +31,8 @@ public final class PeopleDAO extends DAOBroker<People, java.lang.Long> implement
 	 * @param uri URI du keyConcept modifié
 	 * @return KeyConcept à modifier
 	 */
-	 public People loadForUpdate(final URI<People> uri) {
-		return dataStore.loadForUpdate(uri);
+	 public People readForUpdate(final URI<People> uri) {
+		return dataStore.readForUpdate(uri);
 	}
 
 	/**
@@ -42,8 +42,8 @@ public final class PeopleDAO extends DAOBroker<People, java.lang.Long> implement
 	 * @param id Clé du keyConcept modifié
 	 * @return KeyConcept à modifier
 	 */
-	 public People loadForUpdate(final java.lang.Long id) {
-		return loadForUpdate(createDtObjectURI(id));
+	 public People readForUpdate(final java.lang.Long id) {
+		return readForUpdate(createDtObjectURI(id));
 	}
 	
 

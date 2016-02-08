@@ -19,8 +19,7 @@ public class UserWebServices implements WebServices {
 	@POST("/login")
 	@AnonymousAccessAllowed
 	public ApplicationUser login(final @InnerBodyParam("login") String login, final @InnerBodyParam("password") String password) {
-		final ApplicationUser applicationUser = userServices.loginUser(login, password);
-		return applicationUser;
+		return userServices.loginUser(login, password);
 	}
 
 }
