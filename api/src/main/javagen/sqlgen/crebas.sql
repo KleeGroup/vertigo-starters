@@ -1,7 +1,7 @@
 -- ============================================================
---   Nom de SGBD      :  H2                     
---   Date de création :  8 févr. 2016  16:25:42                     
+--   SGBD      		  :  H2                     
 -- ============================================================
+
 
 
 
@@ -40,6 +40,7 @@ create table APPLICATION_USER
     FIRST_NAME  	 VARCHAR(50) 	,
     EMAIL       	 VARCHAR(150)	,
     PRO_ID      	 NUMERIC     	,
+    constraint PK_APPLICATION_USER primary key (USR_ID)
 );
 
 comment on column APPLICATION_USER.USR_ID is
@@ -67,6 +68,7 @@ create table CASTING
     CHARACTER_NAME	 VARCHAR(250)	,
     PEO_ID      	 NUMERIC     	not null,
     MOV_ID      	 NUMERIC     	not null,
+    constraint PK_CASTING primary key (CAST_ID)
 );
 
 comment on column CASTING.CAST_ID is
@@ -96,6 +98,7 @@ create table MOVIE
     DESCRIPTION 	 VARCHAR(3000)	,
     POSTER      	 VARCHAR(250)	,
     RATED       	 VARCHAR(250)	,
+    constraint PK_MOVIE primary key (MOV_ID)
 );
 
 comment on column MOVIE.MOV_ID is
@@ -132,6 +135,7 @@ create table PEOPLE
     FIRST_NAME  	 VARCHAR(50) 	,
     PEO_NAME    	 VARCHAR(250)	,
     IMDBID      	 VARCHAR(100)	,
+    constraint PK_PEOPLE primary key (PEO_ID)
 );
 
 comment on column PEOPLE.PEO_ID is
@@ -156,6 +160,7 @@ create table PROFIL
 (
     PRO_ID      	 NUMERIC     	not null,
     LABEL       	 VARCHAR(100)	,
+    constraint PK_PROFIL primary key (PRO_ID)
 );
 
 comment on column PROFIL.PRO_ID is
@@ -171,6 +176,7 @@ create table SECURITY_ROLE
 (
     SRO_CD      	 VARCHAR(100)	not null,
     LABEL       	 VARCHAR(100)	,
+    constraint PK_SECURITY_ROLE primary key (SRO_CD)
 );
 
 comment on column SECURITY_ROLE.SRO_CD is
@@ -188,6 +194,7 @@ create table USER_AUTHENTIFICATION
     LOGIN       	 VARCHAR(50) 	,
     PASSWORD    	 VARCHAR(32) 	,
     USR_ID      	 NUMERIC     	not null,
+    constraint PK_USER_AUTHENTIFICATION primary key (AUTH_ID)
 );
 
 comment on column USER_AUTHENTIFICATION.AUTH_ID is

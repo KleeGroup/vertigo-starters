@@ -1,12 +1,11 @@
 package lollipop.services.movies;
 
+import javax.inject.Inject;
+
 import io.vertigo.dynamo.domain.model.DtList;
 import io.vertigo.dynamo.domain.model.DtListState;
 import io.vertigo.dynamo.store.criteria.FilterCriteriaBuilder;
 import io.vertigo.dynamo.transaction.Transactional;
-
-import javax.inject.Inject;
-
 import lollipop.dao.movies.MovieDAO;
 import lollipop.domain.movies.Movie;
 
@@ -28,6 +27,6 @@ public class MovieServicesImpl implements MovieServices {
 
 	@Override
 	public DtList<Movie> getMovies(final DtListState dtListState) {
-		return movieDAO.getList(new FilterCriteriaBuilder().build(), dtListState.getMaxRows().getOrElse(50));
+		return movieDAO.getList(new FilterCriteriaBuilder().build(), dtListState.getMaxRows().orElse(50));
 	}
 }

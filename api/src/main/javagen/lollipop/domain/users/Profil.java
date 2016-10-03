@@ -85,7 +85,7 @@ public final class Profil implements DtObject {
 		//---------------------------------------------------------------------
 		//On est toujours dans un mode lazy.
 		if (securityRole == null) {
-			securityRole = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().getList(fkDtListURI);
+			securityRole = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().findAll(fkDtListURI);
 		}
 		return securityRole;
 	}
