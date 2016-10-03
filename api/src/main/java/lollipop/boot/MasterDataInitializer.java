@@ -3,6 +3,8 @@
  */
 package lollipop.boot;
 
+import javax.inject.Inject;
+
 import io.vertigo.core.spaces.component.ComponentInitializer;
 import io.vertigo.dynamo.domain.metamodel.DataType;
 import io.vertigo.dynamo.domain.metamodel.DtDefinition;
@@ -11,9 +13,6 @@ import io.vertigo.dynamo.domain.model.DtListURIForMasterData;
 import io.vertigo.dynamo.domain.model.DtObject;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 import io.vertigo.dynamo.store.StoreManager;
-
-import javax.inject.Inject;
-
 import lollipop.domain.users.Profil;
 import lollipop.domain.users.SecurityRole;
 
@@ -54,7 +53,7 @@ public class MasterDataInitializer implements ComponentInitializer {
 		final int cacheDuration;
 		if (duration == null) {
 			final DtField primaryKey = dtDefinition.getIdField().get();
-			if (primaryKey.getDomain().getDataType() == DataType.String) {
+			if (primaryKey.getDomain().getDataType() == DataType.String) { //PK de type String : MasterData invariante
 				cacheDuration = CACHE_DURATION_LONG;
 			} else {
 				cacheDuration = CACHE_DURATION_SHORT;
