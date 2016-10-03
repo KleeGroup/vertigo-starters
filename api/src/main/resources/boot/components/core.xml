@@ -63,7 +63,7 @@
 
 	<module name="vertigo-vega" api="false">
 		<component api="WebServiceManager" class="io.vertigo.vega.impl.webservice.WebServiceManagerImpl">
-    	    <plugin class="io.vertigo.vega.plugins.webservice.instrospector.annotations.AnnotationsWebServiceIntrospectorPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.scanner.annotations.AnnotationsWebServiceScannerPlugin" />
     	    <plugin class="io.vertigo.vega.plugins.webservice.webserver.sparkjava.SparkJavaServletFilterWebServerPlugin" />
     	    <!-- Handlers -->
     	    <plugin class="io.vertigo.vega.plugins.webservice.handler.ExceptionWebServiceHandlerPlugin" />
