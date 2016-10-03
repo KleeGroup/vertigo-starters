@@ -1,5 +1,9 @@
 package lollipop.webservices.movies;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
 import io.vertigo.dynamo.collections.model.FacetedQueryResult;
 import io.vertigo.vega.engines.webservice.json.UiSelectedFacets;
 import io.vertigo.vega.webservice.WebServices;
@@ -9,11 +13,6 @@ import io.vertigo.vega.webservice.stereotype.InnerBodyParam;
 import io.vertigo.vega.webservice.stereotype.POST;
 import io.vertigo.vega.webservice.stereotype.PathParam;
 import io.vertigo.vega.webservice.stereotype.PathPrefix;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import lollipop.domain.movies.Movie;
 import lollipop.services.movies.MovieServices;
 
