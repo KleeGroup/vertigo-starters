@@ -125,12 +125,12 @@ public final class Casting implements DtObject {
 			// On s'assure que l'objet correspond à la bonne clé
 			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.people.People> uri;
 			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(people), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(people));
-			if (!fkURI.toURN().equals(uri.toURN())) {
+			if (!fkURI.urn().equals(uri.urn())) {
 				people = null;
 			}
 		}		
 		if (people == null) {
-			people = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().get(fkURI);
+			people = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().read(fkURI);
 		}
 		return people;
 	}
@@ -184,12 +184,12 @@ public final class Casting implements DtObject {
 			// On s'assure que l'objet correspond à la bonne clé
 			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.movies.Movie> uri;
 			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(movie), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(movie));
-			if (!fkURI.toURN().equals(uri.toURN())) {
+			if (!fkURI.urn().equals(uri.urn())) {
 				movie = null;
 			}
 		}		
 		if (movie == null) {
-			movie = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().get(fkURI);
+			movie = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().read(fkURI);
 		}
 		return movie;
 	}

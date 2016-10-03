@@ -18,7 +18,7 @@ import io.vertigo.dynamo.task.metamodel.TaskDefinition;
 import io.vertigo.dynamo.task.model.Task;
 import io.vertigo.dynamo.task.model.TaskBuilder;
 import io.vertigo.dynamo.domain.model.URI;
-import io.vertigo.dynamo.impl.store.util.DAOBroker;
+import io.vertigo.dynamo.impl.store.util.DAO;
 import io.vertigo.dynamo.store.StoreManager;
 import io.vertigo.dynamo.store.StoreServices;
 import io.vertigo.dynamo.task.TaskManager;
@@ -28,7 +28,7 @@ import lollipop.domain.movies.Movie;
  * DAO : Accès à un object (DTO, DTC). 
  * MovieDAO
  */
-public final class MovieDAO extends DAOBroker<Movie, java.lang.Long> implements StoreServices {
+public final class MovieDAO extends DAO<Movie, java.lang.Long> implements StoreServices {
 	private final SearchManager searchManager;
 	 
 	/**

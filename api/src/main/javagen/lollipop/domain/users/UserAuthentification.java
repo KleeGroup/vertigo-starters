@@ -124,12 +124,12 @@ public final class UserAuthentification implements DtObject {
 			// On s'assure que l'objet correspond à la bonne clé
 			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.users.ApplicationUser> uri;
 			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(applicationUser), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(applicationUser));
-			if (!fkURI.toURN().equals(uri.toURN())) {
+			if (!fkURI.urn().equals(uri.urn())) {
 				applicationUser = null;
 			}
 		}		
 		if (applicationUser == null) {
-			applicationUser = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().get(fkURI);
+			applicationUser = io.vertigo.app.Home.getApp().getComponentSpace().resolve(io.vertigo.dynamo.store.StoreManager.class).getDataStore().read(fkURI);
 		}
 		return applicationUser;
 	}
