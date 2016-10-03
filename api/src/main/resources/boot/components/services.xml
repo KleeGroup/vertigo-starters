@@ -17,7 +17,7 @@
 	<init>
 		<initializer class="lollipop.boot.DataBaseInitializer"/>
 		<initializer class="lollipop.boot.MasterDataInitializer"/>
-		<initializer class="lollipop.boot.I18nRessourcesInitializer"/>		
+		<initializer class="lollipop.boot.I18nResourcesInitializer"/>		
 	</init>
 	
 </config>
