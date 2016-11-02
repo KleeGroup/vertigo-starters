@@ -1,14 +1,13 @@
 package lollipop.domain.people;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
 import io.vertigo.dynamo.domain.model.KeyConcept;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données People
  */
-@DtDefinition
 public final class People implements KeyConcept {
 
 	/** SerialVersionUID. */
@@ -20,6 +19,12 @@ public final class People implements KeyConcept {
 	private String peoName;
 	private String imdbid;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<People> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'PEO_ID'. 

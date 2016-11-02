@@ -1,6 +1,5 @@
 package lollipop.domain.search
 
 create DtDefinition DT_DUMMY {
-  persistent:"false"
   field DUMMY_LONG {domain: DO_ID label: "Id" notNull:"false"}
 }

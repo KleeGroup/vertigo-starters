@@ -9,13 +9,15 @@
 		<component class="lollipop.dao.movies.MovieDAO"/>
 	</module>
 	
-	<module name="lollipop-searchloader" api="false">
-		<component class="lollipop.services.movies.MovieSearchLoader"/>	
-	</module>
+	
 		
 	<module name="lollipop-services">
 		<component api="MovieServices" class="lollipop.services.movies.MovieServicesImpl"/>	
 		<component api="UserServices" class="lollipop.services.users.UserServicesImpl"/>	
+	</module>
+	
+	<module name="lollipop-searchloader" api="false">
+		<component class="lollipop.services.movies.MovieSearchLoader"/>	
 	</module>
 	
 	

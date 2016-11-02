@@ -1,14 +1,13 @@
 package lollipop.domain.movies;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
 import io.vertigo.dynamo.domain.model.KeyConcept;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données Movie
  */
-@DtDefinition
 public final class Movie implements KeyConcept {
 
 	/** SerialVersionUID. */
@@ -23,6 +22,12 @@ public final class Movie implements KeyConcept {
 	private String poster;
 	private String rated;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<Movie> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'MOV_ID'. 

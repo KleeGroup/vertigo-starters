@@ -1,15 +1,15 @@
 package lollipop.domain.search
 
 alter Domain DO_DATE {
-	indexType: "standard:date"
+	indexType: ":date"
 }
 
 alter Domain DO_YEAR {
-	indexType: "standard:integer"
+	indexType: ":integer"
 }
 
 alter Domain DO_DURATION {
-	indexType: "standard:integer"
+	indexType: ":integer"
 }
 
 alter Domain DO_COMMENT {
@@ -28,7 +28,7 @@ create IndexDefinition IDX_MOVIE {
 }
 
 create FacetDefinition FCT_MOVIE_RUNTIME {  
-  dtDefinition:DT_MOVIE, fieldName:"RUNTIME", label:"Par durée"
+  dtDefinition:DT_MOVIE, fieldName:"RUNTIME", label:"Par durï¿½e"
 }
 
 create FacetDefinition FCT_MOVIE_YEAR {  

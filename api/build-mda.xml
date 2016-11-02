@@ -19,13 +19,22 @@
             </fileset>          	
 		</path>
 	</pathconvert>
-<!--	
-	<property name="build.dir" location="./src/main/webapp/WEB-INF/classes" />
--->
+	
 	<property name="compile_classpath" location="./target/classes" />
 	<property name="build.dir" location="./src/main/webapp/WEB-INF/classes" />
 	<property name="src.dir" location="./src/main/java"/>
 
+	
+	<target name="copy-dependencies" description="Copy dependencies to /lib">
+		<delete dir="./src/main/webapp/WEB-INF/lib" includeemptydirs="true">
+				<include name="**/*" />
+		</delete>
+		<exec executable="cmd">
+		        <arg value="/C"/>
+		        <arg value="mvn"/>
+		        <arg line="war:inplace" />
+		</exec>
+	</target>
 	<!-- ====================================================================== -->
 	<!-- Generation des classes de tests                                        -->
 	<!-- ====================================================================== -->
@@ -40,18 +49,8 @@
 		</delete>
 	</target>
 	
-	<target name="compile-whatisneeded" description="Compile les classes spécifiques pour la génération de code">
-		<mkdir dir="${build.dir}"/>
-		<javac srcdir="${src.dir}"
-		         destdir="${build.dir}"
-		         includes="**/TaskEngineSelectDyn.java"		         
-				 		 includeantruntime="false"
-		         classpath="${build.dir};${class.path};${compile_classpath}"
-		         debug="on"
-		  />
-	</target>
 		
-	<target name="generate-sources" depends="compile-whatisneeded" description="Generation des sources">
+	<target name="generate-sources" description="Generation des sources">
 		<!-- <echo message="compile classpath: ${compile_classpath}"/>
         <echo message="runtime classpath: ${runtime_classpath}"/>
         <echo message="test classpath:    ${test_classpath}"/>

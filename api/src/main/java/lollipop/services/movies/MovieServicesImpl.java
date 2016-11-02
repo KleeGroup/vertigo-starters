@@ -14,6 +14,7 @@ import io.vertigo.dynamo.store.criteria.FilterCriteriaBuilder;
 import io.vertigo.dynamo.transaction.Transactional;
 import lollipop.dao.movies.MovieDAO;
 import lollipop.domain.movies.Movie;
+import lollipop.domain.search.Dummy;
 
 @Transactional
 public class MovieServicesImpl implements MovieServices {
@@ -33,12 +34,17 @@ public class MovieServicesImpl implements MovieServices {
 
 	@Override
 	public DtList<Movie> getMovies(final DtListState dtListState) {
-		return movieDAO.getList(new FilterCriteriaBuilder().build(), dtListState.getMaxRows().orElse(50));
+		return movieDAO.findAll(new FilterCriteriaBuilder<Movie>().build(), dtListState.getMaxRows().orElse(50));
 	}
 
 	@Override
 	public FacetedQueryResult<Movie, SearchQuery> searchMovies(final String criteria, final List<ListFilter> listFilters, final DtListState dtListState) {
 		final SearchQueryBuilder searchQueryBuilder = movieDAO.createSearchQueryBuilderMovie(criteria, listFilters);
 		return movieDAO.loadList(searchQueryBuilder.build(), dtListState);
+	}
+
+	@Override
+	public DtList<Movie> getMovieIndex(final DtList<Dummy> dtcMovieIds) {
+		return movieDAO.getMovieIndex(dtcMovieIds);
 	}
 }

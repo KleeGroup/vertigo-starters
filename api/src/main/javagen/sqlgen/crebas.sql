@@ -58,7 +58,6 @@ comment on column APPLICATION_USER.EMAIL is
 comment on column APPLICATION_USER.PRO_ID is
 'Profil';
 
-create index APPLICATION_USER_PRO_ID_FK on APPLICATION_USER (PRO_ID asc);
 -- ============================================================
 --   Table : CASTING                                        
 -- ============================================================
@@ -80,11 +79,9 @@ comment on column CASTING.CHARACTER_NAME is
 comment on column CASTING.PEO_ID is
 'People';
 
-create index CASTING_PEO_ID_FK on CASTING (PEO_ID asc);
 comment on column CASTING.MOV_ID is
 'Movie';
 
-create index CASTING_MOV_ID_FK on CASTING (MOV_ID asc);
 -- ============================================================
 --   Table : MOVIE                                        
 -- ============================================================
@@ -209,7 +206,32 @@ comment on column USER_AUTHENTIFICATION.PASSWORD is
 comment on column USER_AUTHENTIFICATION.USR_ID is
 'Application user';
 
-create index USER_AUTHENTIFICATION_USR_ID_FK on USER_AUTHENTIFICATION (USR_ID asc);
+
+
+alter table USER_AUTHENTIFICATION
+	add constraint FK_AUTH_USR_APPLICATION_USER foreign key (USR_ID)
+	references APPLICATION_USER (USR_ID);
+
+create index AUTH_USR_APPLICATION_USER_FK on USER_AUTHENTIFICATION (USR_ID asc);
+
+alter table CASTING
+	add constraint FK_CAST_MOV_MOVIE foreign key (MOV_ID)
+	references MOVIE (MOV_ID);
+
+create index CAST_MOV_MOVIE_FK on CASTING (MOV_ID asc);
+
+alter table CASTING
+	add constraint FK_CAST_PEO_PEOPLE foreign key (PEO_ID)
+	references PEOPLE (PEO_ID);
+
+create index CAST_PEO_PEOPLE_FK on CASTING (PEO_ID asc);
+
+alter table APPLICATION_USER
+	add constraint FK_USR_PRO_PROFIL foreign key (PRO_ID)
+	references PROFIL (PRO_ID);
+
+create index USR_PRO_PROFIL_FK on APPLICATION_USER (PRO_ID asc);
+
 
 create table PRO_SRO
 (
@@ -227,21 +249,4 @@ create table PRO_SRO
 create index PRO_SRO_PROFIL_FK on PRO_SRO (PRO_ID asc);
 
 create index PRO_SRO_SECURITY_ROLE_FK on PRO_SRO (SRO_CD asc);
-
-
-alter table USER_AUTHENTIFICATION
-	add constraint FK_AUTH_USR foreign key (USR_ID)
-	references APPLICATION_USER (USR_ID);
-
-alter table CASTING
-	add constraint FK_CAST_MOV foreign key (MOV_ID)
-	references MOVIE (MOV_ID);
-
-alter table CASTING
-	add constraint FK_CAST_PEO foreign key (PEO_ID)
-	references PEOPLE (PEO_ID);
-
-alter table APPLICATION_USER
-	add constraint FK_USR_PRO foreign key (PRO_ID)
-	references PROFIL (PRO_ID);
 
