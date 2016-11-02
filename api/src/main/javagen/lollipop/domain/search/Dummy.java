@@ -1,6 +1,5 @@
 package lollipop.domain.search;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
 import io.vertigo.dynamo.domain.model.DtObject;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
@@ -8,7 +7,6 @@ import io.vertigo.dynamo.domain.util.DtObjectUtil;
  * Attention cette classe est générée automatiquement !
  * Objet de données Dummy
  */
-@DtDefinition(persistent = false)
 public final class Dummy implements DtObject {
 
 	/** SerialVersionUID. */
@@ -16,12 +14,13 @@ public final class Dummy implements DtObject {
 
 	private Long dummyLong;
 
+	
 	/**
 	 * Champ : DATA.
 	 * Récupère la valeur de la propriété 'Id'. 
 	 * @return Long dummyLong 
 	 */
-	@Field(domain = "DO_ID", persistent = false, label = "Id")
+	@Field(domain = "DO_ID", label = "Id")
 	public Long getDummyLong() {
 		return dummyLong;
 	}

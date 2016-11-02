@@ -1,15 +1,14 @@
 package lollipop.domain.users;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
-import io.vertigo.dynamo.domain.model.DtObject;
+import io.vertigo.dynamo.domain.model.Entity;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données ApplicationUser
  */
-@DtDefinition
-public final class ApplicationUser implements DtObject {
+public final class ApplicationUser implements Entity {
 
 	/** SerialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -21,6 +20,12 @@ public final class ApplicationUser implements DtObject {
 	private Long proId;
 	private lollipop.domain.users.Profil profil;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<ApplicationUser> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'USR_ID'. 
@@ -122,20 +127,6 @@ public final class ApplicationUser implements DtObject {
 	 * Association : Profil.
 	 * @return lollipop.domain.users.Profil
 	 */
-    @io.vertigo.dynamo.domain.stereotype.Association (
-    	name = "A_USR_PRO",
-    	fkFieldName = "PRO_ID",
-    	primaryDtDefinitionName = "DT_PROFIL",
-    	primaryIsNavigable = true,
-    	primaryRole = "Profil",
-    	primaryLabel = "Profil",
-    	primaryMultiplicity = "0..1",
-    	foreignDtDefinitionName = "DT_APPLICATION_USER",
-    	foreignIsNavigable = false,
-    	foreignRole = "ApplicationUser",
-    	foreignLabel = "Application user",
-    	foreignMultiplicity = "0..*"
-    )
 	public lollipop.domain.users.Profil getProfil() {
 		final io.vertigo.dynamo.domain.model.URI<lollipop.domain.users.Profil> fkURI = getProfilURI();
 		if (fkURI == null) {
@@ -144,9 +135,7 @@ public final class ApplicationUser implements DtObject {
 		//On est toujours dans un mode lazy. On s'assure cependant que l'objet associé n'a pas changé
 		if (profil != null) {
 			// On s'assure que l'objet correspond à la bonne clé
-			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.users.Profil> uri;
-			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(profil), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(profil));
-			if (!fkURI.urn().equals(uri.urn())) {
+			if (!fkURI.equals(profil.getURI())) {
 				profil = null;
 			}
 		}		

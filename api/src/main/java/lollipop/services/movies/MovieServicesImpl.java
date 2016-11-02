@@ -27,6 +27,6 @@ public class MovieServicesImpl implements MovieServices {
 
 	@Override
 	public DtList<Movie> getMovies(final DtListState dtListState) {
-		return movieDAO.getList(new FilterCriteriaBuilder().build(), dtListState.getMaxRows().orElse(50));
+		return movieDAO.findAll(new FilterCriteriaBuilder<Movie>().build(), dtListState.getMaxRows().orElse(50));
 	}
 }

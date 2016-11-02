@@ -1,15 +1,14 @@
 package lollipop.domain.users;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
-import io.vertigo.dynamo.domain.model.DtObject;
+import io.vertigo.dynamo.domain.model.Entity;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données Profil
  */
-@DtDefinition
-public final class Profil implements DtObject {
+public final class Profil implements Entity {
 
 	/** SerialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -18,6 +17,12 @@ public final class Profil implements DtObject {
 	private String label;
 	private io.vertigo.dynamo.domain.model.DtList<lollipop.domain.users.SecurityRole> securityRole;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<Profil> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'PRO_ID'. 
@@ -62,18 +67,6 @@ public final class Profil implements DtObject {
 	 * Association : Security role.
 	 * @return io.vertigo.dynamo.domain.model.DtList<lollipop.domain.users.SecurityRole>
 	 */
-    @io.vertigo.dynamo.domain.stereotype.AssociationNN (
-    	name = "ANN_PRO_SRO",
-    	tableName = "PRO_SRO",
-    	dtDefinitionA = "DT_PROFIL",
-    	dtDefinitionB = "DT_SECURITY_ROLE",
-    	navigabilityA = false,
-    	navigabilityB = true,
-    	roleA = "Profil",
-    	roleB = "SecurityRole",
-    	labelA = "Profil",
-    	labelB = "Security role"
-    )
 	public io.vertigo.dynamo.domain.model.DtList<lollipop.domain.users.SecurityRole> getSecurityRoleList() {
 //		return this.<lollipop.domain.users.SecurityRole> getList(getSecurityRoleListURI());
 		// On doit avoir une clé primaire renseignée. Si ce n'est pas le cas, on renvoie une liste vide

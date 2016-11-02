@@ -1,15 +1,14 @@
 package lollipop.domain.people;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
-import io.vertigo.dynamo.domain.model.DtObject;
+import io.vertigo.dynamo.domain.model.Entity;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données Casting
  */
-@DtDefinition
-public final class Casting implements DtObject {
+public final class Casting implements Entity {
 
 	/** SerialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -21,6 +20,12 @@ public final class Casting implements DtObject {
 	private lollipop.domain.people.People people;
 	private lollipop.domain.movies.Movie movie;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<Casting> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'Cast_id'. 
@@ -101,20 +106,6 @@ public final class Casting implements DtObject {
 	 * Association : People.
 	 * @return lollipop.domain.people.People
 	 */
-    @io.vertigo.dynamo.domain.stereotype.Association (
-    	name = "A_CAST_PEO",
-    	fkFieldName = "PEO_ID",
-    	primaryDtDefinitionName = "DT_PEOPLE",
-    	primaryIsNavigable = true,
-    	primaryRole = "People",
-    	primaryLabel = "People",
-    	primaryMultiplicity = "1..1",
-    	foreignDtDefinitionName = "DT_CASTING",
-    	foreignIsNavigable = false,
-    	foreignRole = "Casting",
-    	foreignLabel = "Casting",
-    	foreignMultiplicity = "0..*"
-    )
 	public lollipop.domain.people.People getPeople() {
 		final io.vertigo.dynamo.domain.model.URI<lollipop.domain.people.People> fkURI = getPeopleURI();
 		if (fkURI == null) {
@@ -123,9 +114,7 @@ public final class Casting implements DtObject {
 		//On est toujours dans un mode lazy. On s'assure cependant que l'objet associé n'a pas changé
 		if (people != null) {
 			// On s'assure que l'objet correspond à la bonne clé
-			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.people.People> uri;
-			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(people), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(people));
-			if (!fkURI.urn().equals(uri.urn())) {
+			if (!fkURI.equals(people.getURI())) {
 				people = null;
 			}
 		}		
@@ -160,20 +149,6 @@ public final class Casting implements DtObject {
 	 * Association : Movie.
 	 * @return lollipop.domain.movies.Movie
 	 */
-    @io.vertigo.dynamo.domain.stereotype.Association (
-    	name = "A_CAST_MOV",
-    	fkFieldName = "MOV_ID",
-    	primaryDtDefinitionName = "DT_MOVIE",
-    	primaryIsNavigable = true,
-    	primaryRole = "Movie",
-    	primaryLabel = "Movie",
-    	primaryMultiplicity = "1..1",
-    	foreignDtDefinitionName = "DT_CASTING",
-    	foreignIsNavigable = false,
-    	foreignRole = "Casting",
-    	foreignLabel = "Casting",
-    	foreignMultiplicity = "0..*"
-    )
 	public lollipop.domain.movies.Movie getMovie() {
 		final io.vertigo.dynamo.domain.model.URI<lollipop.domain.movies.Movie> fkURI = getMovieURI();
 		if (fkURI == null) {
@@ -182,9 +157,7 @@ public final class Casting implements DtObject {
 		//On est toujours dans un mode lazy. On s'assure cependant que l'objet associé n'a pas changé
 		if (movie != null) {
 			// On s'assure que l'objet correspond à la bonne clé
-			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.movies.Movie> uri;
-			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(movie), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(movie));
-			if (!fkURI.urn().equals(uri.urn())) {
+			if (!fkURI.equals(movie.getURI())) {
 				movie = null;
 			}
 		}		

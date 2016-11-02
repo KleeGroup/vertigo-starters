@@ -1,15 +1,14 @@
 package lollipop.domain.users;
 
-import io.vertigo.dynamo.domain.stereotype.DtDefinition;
 import io.vertigo.dynamo.domain.stereotype.Field;
-import io.vertigo.dynamo.domain.model.DtObject;
+import io.vertigo.dynamo.domain.model.Entity;
+import io.vertigo.dynamo.domain.model.URI;
 import io.vertigo.dynamo.domain.util.DtObjectUtil;
 /**
  * Attention cette classe est générée automatiquement !
  * Objet de données UserAuthentification
  */
-@DtDefinition
-public final class UserAuthentification implements DtObject {
+public final class UserAuthentification implements Entity {
 
 	/** SerialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -20,6 +19,12 @@ public final class UserAuthentification implements DtObject {
 	private Long usrId;
 	private lollipop.domain.users.ApplicationUser applicationUser;
 
+	/** {@inheritDoc} */
+	@Override
+	public URI<UserAuthentification> getURI() {
+		return DtObjectUtil.createURI(this);
+	}
+	
 	/**
 	 * Champ : ID.
 	 * Récupère la valeur de la propriété 'AUTH_ID'. 
@@ -100,20 +105,6 @@ public final class UserAuthentification implements DtObject {
 	 * Association : Application user.
 	 * @return lollipop.domain.users.ApplicationUser
 	 */
-    @io.vertigo.dynamo.domain.stereotype.Association (
-    	name = "A_AUTH_USR",
-    	fkFieldName = "USR_ID",
-    	primaryDtDefinitionName = "DT_APPLICATION_USER",
-    	primaryIsNavigable = true,
-    	primaryRole = "ApplicationUser",
-    	primaryLabel = "Application user",
-    	primaryMultiplicity = "1..1",
-    	foreignDtDefinitionName = "DT_USER_AUTHENTIFICATION",
-    	foreignIsNavigable = false,
-    	foreignRole = "UserAuthentification",
-    	foreignLabel = "User authentification",
-    	foreignMultiplicity = "0..*"
-    )
 	public lollipop.domain.users.ApplicationUser getApplicationUser() {
 		final io.vertigo.dynamo.domain.model.URI<lollipop.domain.users.ApplicationUser> fkURI = getApplicationUserURI();
 		if (fkURI == null) {
@@ -122,9 +113,7 @@ public final class UserAuthentification implements DtObject {
 		//On est toujours dans un mode lazy. On s'assure cependant que l'objet associé n'a pas changé
 		if (applicationUser != null) {
 			// On s'assure que l'objet correspond à la bonne clé
-			final io.vertigo.dynamo.domain.model.URI<lollipop.domain.users.ApplicationUser> uri;
-			uri = new io.vertigo.dynamo.domain.model.URI<>(io.vertigo.dynamo.domain.util.DtObjectUtil.findDtDefinition(applicationUser), io.vertigo.dynamo.domain.util.DtObjectUtil.getId(applicationUser));
-			if (!fkURI.urn().equals(uri.urn())) {
+			if (!fkURI.equals(applicationUser.getURI())) {
 				applicationUser = null;
 			}
 		}		
