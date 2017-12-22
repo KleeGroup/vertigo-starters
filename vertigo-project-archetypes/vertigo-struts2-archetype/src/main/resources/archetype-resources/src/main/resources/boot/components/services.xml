@@ -1,11 +1,11 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
 
-	<module name="aop" api="false">
-		<aspect class="io.vertigo.dynamo.impl.transaction.VTransactionAspect"/>
+	<module name="aop">
+		<aspect class="io.vertigo.commons.impl.transaction.VTransactionAspect"/>
 	</module>
 
-	<module name="dao" api="false">
+	<module name="dao">
 		<component class="${package}.dao.movies.MovieDAO" />
 	</module>
 
