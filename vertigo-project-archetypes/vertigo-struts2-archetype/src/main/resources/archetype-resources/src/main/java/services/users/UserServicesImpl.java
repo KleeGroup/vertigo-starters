@@ -21,7 +21,7 @@ public class UserServicesImpl implements UserServices {
 	public ApplicationUser loginUser(final String login, final String password) {
 		//mock login User
 		if (login.isEmpty() || password.isEmpty() || login.startsWith(password) || password.startsWith(login)) {
-			throw new VUserException(new MessageText("Échec de la connexion : nom d'utilisateur inconnu ou mot de passe incorrect.", null));
+			throw new VUserException(MessageText.of("Échec de la connexion : nom d'utilisateur inconnu ou mot de passe incorrect."));
 		}
 
 		final ApplicationUser applicationUser = new ApplicationUser();
