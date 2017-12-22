@@ -5,7 +5,7 @@ package lollipop.boot;
 
 import javax.inject.Inject;
 
-import io.vertigo.core.spaces.component.ComponentInitializer;
+import io.vertigo.core.component.ComponentInitializer;
 import io.vertigo.dynamo.domain.metamodel.DataType;
 import io.vertigo.dynamo.domain.metamodel.DtDefinition;
 import io.vertigo.dynamo.domain.metamodel.DtField;

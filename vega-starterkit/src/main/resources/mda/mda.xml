@@ -27,7 +27,7 @@
             <param name ="encoding" value="UTF-8"/>
             <param name ="projectPackageName" value="io.vertigo.starterkit"/>
 
-	        <plugin class="io.vertigo.studio.plugins.mda.domain.DomainGeneratorPlugin">
+	        <plugin class="io.vertigo.studio.plugins.mda.domain.java.DomainGeneratorPlugin">
 		        <param name ="targetSubDir" value="."/>
 	            <param name="generateDtResources" value="false" /><!-- FALSE -->
 	            <param name="generateDtDefinitions" value="true" />
@@ -40,12 +40,12 @@
 	        <plugin class="io.vertigo.studio.plugins.mda.file.FileInfoGeneratorPlugin">
 		        <param name ="targetSubDir" value="."/>
 	        </plugin>
-	        <plugin class="io.vertigo.studio.plugins.mda.domain.SqlGeneratorPlugin">
+	        <plugin class="io.vertigo.studio.plugins.mda.domain.sql.SqlGeneratorPlugin">
 		        <param name ="targetSubDir" value="sqlgen"/>
 	            <param name="baseCible" value="PostgreSql" />
 	            <param name="generateDrop" value="false" />
 	        </plugin>
-			<plugin class="io.vertigo.studio.plugins.mda.domain.JSGeneratorPlugin">
+			<plugin class="io.vertigo.studio.plugins.mda.domain.js.JSGeneratorPlugin">
 		        <param name ="targetSubDir" value="js"/>
 	            <param name="generateDtResourcesJS" value="false" />
 	            <param name="generateJsDtDefinitions" value="true" />

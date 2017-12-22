@@ -3,15 +3,6 @@
  */
 package lollipop.boot;
 
-import io.vertigo.core.resource.ResourceManager;
-import io.vertigo.core.spaces.component.ComponentInitializer;
-import io.vertigo.dynamo.database.SqlDataBaseManager;
-import io.vertigo.dynamo.database.connection.SqlConnection;
-import io.vertigo.dynamo.database.statement.SqlCallableStatement;
-import io.vertigo.dynamo.transaction.VTransactionManager;
-import io.vertigo.dynamo.transaction.VTransactionWritable;
-import io.vertigo.lang.WrappedException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,6 +11,14 @@ import java.util.Calendar;
 
 import javax.inject.Inject;
 
+import io.vertigo.commons.transaction.VTransactionManager;
+import io.vertigo.commons.transaction.VTransactionWritable;
+import io.vertigo.core.component.ComponentInitializer;
+import io.vertigo.core.resource.ResourceManager;
+import io.vertigo.database.sql.SqlDataBaseManager;
+import io.vertigo.database.sql.connection.SqlConnection;
+import io.vertigo.database.sql.statement.SqlStatement;
+import io.vertigo.lang.WrappedException;
 import lollipop.dao.movies.MovieDAO;
 import lollipop.domain.movies.Movie;
 
@@ -47,11 +46,7 @@ public class DataBaseInitializer implements ComponentInitializer {
 
 	private void createDataBase() {
 		SqlConnection connection;
-		try {
-			connection = sqlDataBaseManager.getConnectionProvider(SqlDataBaseManager.MAIN_CONNECTION_PROVIDER_NAME).obtainConnection();
-		} catch (final SQLException e) {
-			throw WrappedException.wrapIfNeeded(e, "Can't open connection");
-		}
+		connection = sqlDataBaseManager.getConnectionProvider(SqlDataBaseManager.MAIN_CONNECTION_PROVIDER_NAME).obtainConnection();
 		execSqlScript(connection, "sqlgen/crebas.sql");
 	}
 
@@ -66,22 +61,21 @@ public class DataBaseInitializer implements ComponentInitializer {
 					crebaseSql.append(adaptedInputLine).append('\n');
 				}
 				if (inputLine.trim().endsWith(";")) {
-					execCallableStatement(connection, sqlDataBaseManager, crebaseSql.toString());
+					execPreparedStatement(connection, sqlDataBaseManager, crebaseSql.toString());
 					crebaseSql.setLength(0);
 				}
 			}
 			in.close();
 		} catch (final IOException e) {
-			throw WrappedException.wrapIfNeeded(e, "Can't exec script {0}", scriptPath);
+			throw WrappedException.wrap(e, "Can't exec script {0}", scriptPath);
 		}
 	}
 
-	private static void execCallableStatement(final SqlConnection connection, final SqlDataBaseManager sqlDataBaseManager, final String sql) {
-		try (final SqlCallableStatement callableStatement = sqlDataBaseManager.createCallableStatement(connection, sql)) {
-			callableStatement.init();
-			callableStatement.executeUpdate();
+	private static void execPreparedStatement(final SqlConnection connection, final SqlDataBaseManager sqlDataBaseManager, final String sql) {
+		try {
+			sqlDataBaseManager.executeUpdate(SqlStatement.builder(sql).build(), connection);
 		} catch (final SQLException e) {
-			throw WrappedException.wrapIfNeeded(e, "Can't exec command {0}", sql);
+			throw WrappedException.wrap(e, "Can't exec command {0}", sql);
 		}
 	}
 

@@ -1,7 +1,7 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
 
-	<module name="vega-starterkit-ws" api="false">
+	<module name="vega-starterkit-ws" >
 		<component class="io.vertigo.vega.impl.webservice.catalog.SwaggerWebServices" />
 		<component class="io.vertigo.vega.impl.webservice.healthcheck.HealthcheckWebServices" />
 	</module>

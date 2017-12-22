@@ -1,12 +1,11 @@
 package lollipop.services.users;
 
-import io.vertigo.dynamo.transaction.Transactional;
-import io.vertigo.lang.MessageText;
-import io.vertigo.lang.VUserException;
-import io.vertigo.persona.security.VSecurityManager;
-
 import javax.inject.Inject;
 
+import io.vertigo.commons.transaction.Transactional;
+import io.vertigo.core.locale.MessageText;
+import io.vertigo.lang.VUserException;
+import io.vertigo.persona.security.VSecurityManager;
 import lollipop.domain.users.ApplicationUser;
 import lollipop.user.LollipopUserSession;
 
@@ -21,7 +20,7 @@ public class UserServicesImpl implements UserServices {
 	public ApplicationUser loginUser(final String login, final String password) {
 		//mock login User
 		if (login.isEmpty() || password.isEmpty() || login.startsWith(password) || password.startsWith(login)) {
-			throw new VUserException(new MessageText(UserResources.INVALID_CREDENTIALS));
+			throw new VUserException(MessageText.of(UserResources.INVALID_CREDENTIALS));
 		}
 
 		final ApplicationUser applicationUser = new ApplicationUser();

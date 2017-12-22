@@ -1,11 +1,11 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
 	
-	<module name="lollipop-aop" api="false">
-		<aspect class="io.vertigo.dynamo.impl.transaction.VTransactionAspect"/>
+	<module name="lollipop-aop">
+		<aspect class="io.vertigo.commons.impl.transaction.VTransactionAspect"/>
 	</module>
 	
-	<module name="lollipop-dao" api="false">
+	<module name="lollipop-dao">
 		<component class="lollipop.dao.movies.MovieDAO"/>
 	</module>
 	

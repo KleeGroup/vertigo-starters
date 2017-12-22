@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import io.vertigo.core.component.ComponentInitializer;
 import io.vertigo.core.locale.LocaleManager;
-import io.vertigo.lang.MessageKey;
+import io.vertigo.core.locale.MessageKey;
 
 /**
  * Init ressources.

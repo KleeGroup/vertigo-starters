@@ -3,11 +3,10 @@
  */
 package lollipop.boot;
 
-import io.vertigo.core.locale.LocaleManager;
-import io.vertigo.core.spaces.component.ComponentInitializer;
-
 import javax.inject.Inject;
 
+import io.vertigo.core.component.ComponentInitializer;
+import io.vertigo.core.locale.LocaleManager;
 import lollipop.services.users.UserResources;
 
 /**

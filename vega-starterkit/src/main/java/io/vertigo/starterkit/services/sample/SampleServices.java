@@ -1,6 +1,6 @@
 package io.vertigo.starterkit.services.sample;
 
-import io.vertigo.lang.Component;
+import io.vertigo.core.component.Component;
 
 /**
  * @author xdurand
@@ -9,7 +9,7 @@ import io.vertigo.lang.Component;
 public interface SampleServices extends Component {
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @return Hello {name}
 	 */
