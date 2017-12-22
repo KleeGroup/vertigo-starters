@@ -2,10 +2,10 @@ package ${package}.services.movies;
 
 import javax.inject.Inject;
 
+import io.vertigo.commons.transaction.Transactional;
+import io.vertigo.dynamo.criteria.Criterions;
 import io.vertigo.dynamo.domain.model.DtList;
 import io.vertigo.dynamo.domain.model.DtListState;
-import io.vertigo.dynamo.store.criteria.Criterions;
-import io.vertigo.dynamo.transaction.Transactional;
 import ${package}.dao.movies.MovieDAO;
 import ${package}.domain.movies.Movie;
 

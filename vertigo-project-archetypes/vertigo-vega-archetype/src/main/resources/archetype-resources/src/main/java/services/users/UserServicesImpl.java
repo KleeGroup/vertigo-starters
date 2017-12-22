@@ -1,7 +1,7 @@
 package ${package}.services.users;
 
-import io.vertigo.dynamo.transaction.Transactional;
-import io.vertigo.lang.MessageText;
+import io.vertigo.commons.transaction.Transactional;
+import io.vertigo.core.locale.MessageText;
 import io.vertigo.lang.VUserException;
 import io.vertigo.persona.security.VSecurityManager;
 
