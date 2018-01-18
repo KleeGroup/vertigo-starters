@@ -1,20 +1,20 @@
 /**
- * 
+ *
  */
 package io.vertigo.starterkit;
 
-import io.vertigo.starterkit.tools.AbstractStarterKitTest;
-
 import java.util.List;
+
+import javax.inject.Inject;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import io.vertigo.commons.analytics.AnalyticsManager;
 import io.vertigo.commons.analytics.health.HealthCheck;
 import io.vertigo.commons.analytics.health.HealthMeasure;
 import io.vertigo.commons.analytics.health.HealthStatus;
-import io.vertigo.commons.impl.analytics.health.HealthAnalyticsUtil;
-
+import io.vertigo.starterkit.tools.AbstractStarterKitTest;
 
 /**
  * Classe de test vérifiant le bon démarrage de l'application.
@@ -23,13 +23,16 @@ import io.vertigo.commons.impl.analytics.health.HealthAnalyticsUtil;
  */
 public class ApplicationStartTest extends AbstractStarterKitTest {
 
+	@Inject
+	private AnalyticsManager analyticsManager;
+
 	/**
 	 * On vérifie le bon démarrage de l'application.
 	 */
 	@Test
 	public void testStartApplication() {
 		// On récupère l'état de santé globale et on le loggue
-		final List<HealthCheck> lst = HealthAnalyticsUtil.getHealthChecks();
+		final List<HealthCheck> lst = analyticsManager.getHealthChecks();
 		String noPb = null;
 		for (final HealthCheck health : lst) {
 			final StringBuilder sb = new StringBuilder();
