@@ -1,34 +1,5 @@
 <?xml version =	'1.0' encoding = 'ISO-8859-1'?>
 <config>
-	<boot locales="fr_FR">
-		<plugin class="io.vertigo.core.plugins.resource.classpath.ClassPathResourceResolverPlugin" />
-		<plugin class="io.vertigo.vega.plugins.webservice.servlet.WebAppContextParamPlugin"/>
-		<plugin class="io.vertigo.core.plugins.param.xml.XmlParamPlugin">
-			<param name="url" value="/boot/config/application-config.xml"/>
-		</plugin>
-	</boot>
-
-	<module name="vertigo-commons">
-		<component api="DaemonManager" class="io.vertigo.commons.impl.daemon.DaemonManagerImpl"/>
-		<component api="AnalyticsManager" class="io.vertigo.commons.impl.analytics.AnalyticsManagerImpl" />
-		<component api="ScriptManager" class="io.vertigo.commons.impl.script.ScriptManagerImpl">
-			<plugin class="io.vertigo.commons.plugins.script.janino.JaninoExpressionEvaluatorPlugin" />
-		</component>
-		<component api="CodecManager" class="io.vertigo.commons.impl.codec.CodecManagerImpl" />
-		<component api="CacheManager" class="io.vertigo.commons.impl.cache.CacheManagerImpl">
-			<plugin class="io.vertigo.commons.plugins.cache.memory.MemoryCachePlugin" />
-		</component>
-		<component api="VTransactionManager" class="io.vertigo.commons.impl.transaction.VTransactionManagerImpl" />
-	</module>
-
-	<module name="vertigo-database">
-		<component api="SqlDataBaseManager" class="io.vertigo.database.impl.sql.SqlDataBaseManagerImpl">
-			<plugin class="io.vertigo.database.plugins.sql.connection.datasource.DataSourceConnectionProviderPlugin">
-				<param name="classname" value="io.vertigo.database.impl.sql.vendor.postgresql.PostgreSqlDataBase" />
-				<param name="source" value="java:/comp/env/jdbc/DataSource" />
-			</plugin>
-		</component>
-	</module>
 	
 	<module name="vertigo-dynamo">
 		<component api="CollectionsManager" class="io.vertigo.dynamo.impl.collections.CollectionsManagerImpl" />

@@ -3,7 +3,7 @@
   <display-name>vega-starterkit</display-name>
   <context-param>
         <param-name>boot.applicationConfiguration</param-name>
-        <param-value>/boot/components/core.xml;/boot/components/vega-starterkit.xml</param-value>
+        <param-value>/boot/components/boot.xml;/boot/components/commons.xml;/boot/components/db.xml;/boot/components/core.xml;/boot/components/vega-starterkit.xml</param-value>
     </context-param>
     
   <listener>
