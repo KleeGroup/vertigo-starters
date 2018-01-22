@@ -9,6 +9,20 @@
 
   <name>vertigo-struts2-archetype</name>
 
+  <distributionManagement>
+		<repository>
+			<id>klee-nexus</id>
+			<name>KleeGoup nexus Snapshots</name>
+			<url>http://kleegroup-nexus:8080/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>klee-nexus</id>
+			<name>KleeGoup nexus Snapshots</name>
+			<url>http://kleegroup-nexus:8080/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	
   <build>
     <extensions>
       <extension>
