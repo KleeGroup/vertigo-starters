@@ -26,7 +26,9 @@
 	<module name="vertigo-vega">
 		<component api="WebServiceManager" class="io.vertigo.vega.impl.webservice.WebServiceManagerImpl">
     	    <plugin class="io.vertigo.vega.plugins.webservice.scanner.annotations.AnnotationsWebServiceScannerPlugin" />
-    	    <plugin class="io.vertigo.vega.plugins.webservice.webserver.sparkjava.SparkJavaServletFilterWebServerPlugin" />
+    	    <plugin class="io.vertigo.vega.plugins.webservice.webserver.sparkjava.SparkJavaServletFilterWebServerPlugin" >
+    	    	<param name="apiPrefix" value="/api"/>
+    	    </plugin>
     	    <!-- Handlers -->
     	    <plugin class="io.vertigo.vega.plugins.webservice.handler.ExceptionWebServiceHandlerPlugin" />
     	    <plugin class="io.vertigo.vega.plugins.webservice.handler.AnalyticsWebServiceHandlerPlugin" />
