@@ -4,7 +4,7 @@
 
   <groupId>io.vertigo</groupId>
   <artifactId>vertigo-struts2-archetype</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.2</version>
   <packaging>maven-archetype</packaging>
 
   <name>vertigo-struts2-archetype</name>
