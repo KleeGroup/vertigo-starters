@@ -71,25 +71,26 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.5.0</version>
+				<version>1.6.0</version>
 				<executions>
 					<execution>
-						<id>java</id>
+						<id>generate-javagen</id>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>java</goal>
+							<goal>exec</goal>
 						</goals>
+						<configuration>
+							<executable>java</executable>
+							<addResourcesToClasspath>true</addResourcesToClasspath>
+							<arguments>
+								<argument>-classpath</argument>
+								<classpath />
+								<argument>io.vertigo.studio.tools.NameSpace2Java</argument>
+								<argument>/mda/applicationConfiguration.properties</argument>
+							</arguments>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<mainClass>io.vertigo.studio.tools.NameSpace2Java</mainClass>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${basedir}/src/main/resources</additionalClasspathElement>
-					</additionalClasspathElements>
-					<arguments>
-						<argument>/mda/applicationConfiguration.properties</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -121,34 +122,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>exec-maven-plugin</artifactId>
-										<versionRange>[1.5.0,)</versionRange>
-										<goals>
-											<goal>java</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore/>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
