@@ -3,6 +3,8 @@
 
 A set of projects and maven archetypes to help you start a new vertigo project.
 
+For [Eclipse](https://www.eclipse.org/) users, it is advised to use the [KSP Plugin](https://github.com/sebez/vertigo-chroma-kspplugin) to enhance Developer Experience.
+
 -----
 #License
                 Copyright (C) 2017, KleeGroup, direction.technique@kleegroup.com (http://www.kleegroup.com)
