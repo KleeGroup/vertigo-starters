@@ -1,6 +1,6 @@
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
 
@@ -25,7 +25,7 @@
 	<constant name="struts.freemarker.manager.classname" value="io.vertigo.struts2.impl.views.freemarker.VFreemarkerManager" />
 
 
-	<package name="default" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default" strict-method-invocation="false">
 		<interceptors>
 			<interceptor name="userException" class="io.vertigo.struts2.impl.interceptor.VUserExceptionInterceptor" />
 			<interceptor name="contextStore" class="io.vertigo.struts2.impl.interceptor.KActionContextStoreInterceptor" />
