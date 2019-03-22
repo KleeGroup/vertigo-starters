@@ -30,8 +30,8 @@ import org.junit.Before;
 
 import io.vertigo.app.App;
 import io.vertigo.app.AutoCloseableApp;
-import io.vertigo.app.config.NodeConfig;
-import io.vertigo.app.config.xml.XMLNodeConfigBuilder;
+import io.vertigo.app.config.AppConfig;
+import io.vertigo.app.config.xml.XMLAppConfigBuilder;
 import io.vertigo.core.component.di.injector.DIInjector;
 import io.vertigo.lang.Assertion;
 import io.vertigo.lang.WrappedException;
@@ -51,7 +51,7 @@ public abstract class AbstractSharedHomeTestCaseJU4 {
 
 	private synchronized void startHome() {
 		setProperties(loadProperties());
-		app = new AutoCloseableApp(buildNodeConfig());
+		app = new AutoCloseableApp(buildAppConfig());
 	}
 
 	private synchronized void stopHome() {
@@ -172,11 +172,11 @@ public abstract class AbstractSharedHomeTestCaseJU4 {
 	 * 
 	 * @return App config
 	 */
-	protected NodeConfig buildNodeConfig() {
+	protected AppConfig buildAppConfig() {
 		final Properties prop = new Properties();
 		prop.putAll(getProperties());
 		final String[] managersXml;
-		final XMLNodeConfigBuilder config = new XMLNodeConfigBuilder();
+		final XMLAppConfigBuilder config = new XMLAppConfigBuilder();
 		final String value = prop.getProperty(BOOT_KEY);
 		if (StringUtil.isEmpty(value))
 			managersXml = getManagersXmlFileName();
