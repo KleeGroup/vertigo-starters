@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:vu="http://www.morphbit.com/thymeleaf/component" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{templates/${projectNameLowerCase}ListLayout}">
+<head>
+	<title>Movies</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<vu:table list="movies" color="primary" componentId="moviesTable" >
+			<vu:include-data object="movies" field="movId" />
+			<vu:column field="name" sortable="true" />
+			<vu:column field="year" sortable="true" />
+			<vu:column field="imdbid" sortable="true" />
+		</vu:table>
+	</section>
+</body>
+</html>
