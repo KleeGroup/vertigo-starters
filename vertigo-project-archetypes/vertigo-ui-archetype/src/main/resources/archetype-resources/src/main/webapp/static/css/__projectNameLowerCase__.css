@@ -1,0 +1,17 @@
+/******** CSS SPECIFIQUE A CERTAINES PAGES *******/
+
+nav .q-list, .nav .q-list {
+	padding: 0;
+}
+
+nav a, .nav a {
+	text-decoration: none;	
+}
+
+.q-list-link .q-item:hover {
+	background: lightgrey;
+}
+
+nav a.q-item, .nav a.q_item {
+	color: grey;	
+}
