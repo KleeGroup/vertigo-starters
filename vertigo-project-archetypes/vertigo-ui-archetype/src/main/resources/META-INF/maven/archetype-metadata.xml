@@ -2,6 +2,7 @@
 <archetype-descriptor xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd" name="vertigo-api"
     xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   
   <requiredProperties>
     <requiredProperty key="projectName" >
     	<defaultValue>${artifactId.substring(0,1).toUpperCase()}${artifactId.substring(1)}</defaultValue>

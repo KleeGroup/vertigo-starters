@@ -1,3 +1,4 @@
+#set( $dollar = '$' )
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
   xmlns:vu="http://www.morphbit.com/thymeleaf/component"
@@ -25,7 +26,7 @@
 				<q-toolbar class="justify-between">
 					<div class="row">
 						<q-btn flat round dense class="lt-lg"
-						th:with="showLeft=${model.vContext['componentStates'].addComponentState('navDrawer').addPrimitive('showLeft', true)}, mini=${model.vContext['componentStates']['navDrawer'].addPrimitive('mini', false)}"
+						th:with="showLeft=${dollar}{model.vContext['componentStates'].addComponentState('navDrawer').addPrimitive('showLeft', true)}, mini=${dollar}{model.vContext['componentStates']['navDrawer'].addPrimitive('mini', false)}"
 						@click="componentStates.navDrawer.showLeft = !componentStates.navDrawer.showLeft" icon="menu" aria-label="Toggle menu on left side"></q-btn>
 						<q-toolbar-title class="gt-md">
 								App
