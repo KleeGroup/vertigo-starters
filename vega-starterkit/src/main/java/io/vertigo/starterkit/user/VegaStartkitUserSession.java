@@ -2,8 +2,8 @@ package io.vertigo.starterkit.user;
 
 import java.util.Locale;
 
-import io.vertigo.persona.security.UserSession;
-import io.vertigo.starterkit.domain.users.ApplicationUser;
+import io.vertigo.account.security.UserSession;
+import lollipop.domain.users.ApplicationUser;
 
 public final class VegaStartkitUserSession extends UserSession {
 	private static final long serialVersionUID = 3522402730076977461L;

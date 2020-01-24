@@ -7,13 +7,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import io.vertigo.commons.analytics.AnalyticsManager;
-import io.vertigo.commons.analytics.health.HealthCheck;
-import io.vertigo.commons.analytics.health.HealthMeasure;
-import io.vertigo.commons.analytics.health.HealthStatus;
+import io.vertigo.core.analytics.AnalyticsManager;
+import io.vertigo.core.analytics.health.HealthCheck;
+import io.vertigo.core.analytics.health.HealthMeasure;
+import io.vertigo.core.analytics.health.HealthStatus;
 import io.vertigo.starterkit.tools.AbstractStarterKitTest;
 
 /**
@@ -52,6 +52,6 @@ public class ApplicationStartTest extends AbstractStarterKitTest {
 				noPb = msg;
 			}
 		}
-		Assert.assertNull(noPb);
+		Assertions.assertNull(noPb);
 	}
 }

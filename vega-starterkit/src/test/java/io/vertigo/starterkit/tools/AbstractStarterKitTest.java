@@ -1,8 +1,7 @@
 /**
- * 
+ *
  */
 package io.vertigo.starterkit.tools;
-
 
 import java.util.Optional;
 
@@ -10,12 +9,12 @@ import javax.inject.Inject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
-import io.vertigo.AbstractSharedHomeTestCaseJU4;
+import io.vertigo.AbstractSharedHomeTestCaseJU5;
+import io.vertigo.account.security.VSecurityManager;
 import io.vertigo.commons.transaction.VTransactionManager;
 import io.vertigo.commons.transaction.VTransactionWritable;
-import io.vertigo.persona.security.VSecurityManager;
 import io.vertigo.starterkit.user.VegaStartkitUserSession;
 
 /**
@@ -23,7 +22,7 @@ import io.vertigo.starterkit.user.VegaStartkitUserSession;
  * @author jmforhan
  *
  */
-public class AbstractStarterKitTest extends AbstractSharedHomeTestCaseJU4 implements AssertComplentaire {
+public class AbstractStarterKitTest extends AbstractSharedHomeTestCaseJU5 implements AssertComplentaire {
 
 	private final Logger logger = LogManager.getLogger(getClass());
 
@@ -57,8 +56,7 @@ public class AbstractStarterKitTest extends AbstractSharedHomeTestCaseJU4 implem
 	 */
 	@Override
 	protected void doSetUp() throws Exception {
-		Assert.assertFalse("le test précédent n'a pas fermé correctement sa transaction",
-				transactionManager.hasCurrentTransaction());
+		Assertions.assertFalse(transactionManager.hasCurrentTransaction(), "le test précédent n'a pas fermé correctement sa transaction");
 		transaction = transactionManager.createCurrentTransaction();
 		// s'il y a une session utilisateur, il faut l'arrêter pour en créer une
 		// nouvelle
@@ -74,7 +72,7 @@ public class AbstractStarterKitTest extends AbstractSharedHomeTestCaseJU4 implem
 	 */
 	@Override
 	protected void doTearDown() throws Exception {
-		Assert.assertTrue("Tous les test doivent annuler leur transaction", transactionManager.hasCurrentTransaction());
+		Assertions.assertTrue(transactionManager.hasCurrentTransaction(), "Tous les test doivent annuler leur transaction");
 		transaction.rollback();
 		transaction.close();
 		if (securityManager.getCurrentUserSession().isPresent()) {

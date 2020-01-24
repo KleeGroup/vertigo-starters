@@ -1,15 +1,13 @@
 package io.vertigo.starterkit.tools;
 
-
 import java.io.Serializable;
 
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
+import io.vertigo.core.lang.VUserException;
 import io.vertigo.core.locale.MessageKey;
 import io.vertigo.core.locale.MessageText;
-import io.vertigo.core.locale.MessageTextBuilder;
-import io.vertigo.lang.VUserException;
 
 /**
  * Classe d'assertion complémentaire.
@@ -21,7 +19,7 @@ public interface AssertComplentaire {
 
 	/**
 	 * Vérification qu'une fonction lève une exception d'un type attendu
-	 * 
+	 *
 	 * @param <D>
 	 *            type de l'exception
 	 * @param lambda
@@ -33,10 +31,10 @@ public interface AssertComplentaire {
 		try {
 			lambda.run();
 			if (exceptionClass != null) {
-				Assert.fail("Exception attendue");
+				Assertions.fail("Exception attendue");
 			}
 		} catch (final Exception e) {
-			Assert.assertEquals(exceptionClass, e.getClass());
+			Assertions.assertEquals(exceptionClass, e.getClass());
 		}
 	}
 
@@ -111,11 +109,11 @@ public interface AssertComplentaire {
 		}
 		if (expected != null && actual != null) {
 			// On vérifie le message affiché
-			Assert.assertEquals(expected.getDisplay(), actual.getDisplay());
+			Assertions.assertEquals(expected.getDisplay(), actual.getDisplay());
 			return;
 		}
 		// Vérification par défaut
-		Assert.assertEquals(expected == null ? null : expected.toString(), actual == null ? null : actual.toString());
+		Assertions.assertEquals(expected == null ? null : expected.toString(), actual == null ? null : actual.toString());
 	}
 
 	/**
@@ -130,7 +128,7 @@ public interface AssertComplentaire {
 	 */
 	default void failIfExpectedError(final MessageKey key, final Serializable... params) {
 		if (key != null) {
-			Assert.fail("erreur attendue" + getMessage(key, params).getDisplay());
+			Assertions.fail("erreur attendue" + getMessage(key, params).getDisplay());
 		}
 	}
 
@@ -151,10 +149,7 @@ public interface AssertComplentaire {
 		if (params == null || params.length == 0) {
 			return MessageText.of(key);
 		}
-		final MessageTextBuilder mb = MessageText.builder();
-		mb.withKey(key);
-		mb.withParams(params);
-		return mb.build();
+		return MessageText.of(key, params);
 	}
 
 	/**

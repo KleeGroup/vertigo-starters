@@ -1,6 +1,6 @@
 package io.vertigo.starterkit.services.sample;
 
-import io.vertigo.core.component.Component;
+import io.vertigo.core.node.component.Component;
 
 /**
  * @author xdurand

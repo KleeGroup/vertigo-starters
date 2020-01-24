@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<maven.test.error.ignore>true</maven.test.error.ignore>
-		<vertigo.version>1.1.2</vertigo.version>
+		<vertigo.version>3.0.0-SNAPSHOT</vertigo.version>
 	</properties>
 
     <dependencies>
@@ -27,22 +27,22 @@
 
          <dependency>
             <groupId>io.vertigo</groupId>
-            <artifactId>vertigo-commons-impl</artifactId>
+            <artifactId>vertigo-commons</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertigo</groupId>
-            <artifactId>vertigo-dynamo-impl</artifactId>
+            <artifactId>vertigo-datafactory</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertigo</groupId>
-            <artifactId>vertigo-account-impl</artifactId>
+            <artifactId>vertigo-account</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertigo</groupId>
-            <artifactId>vertigo-vega-impl</artifactId>
+            <artifactId>vertigo-vega</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
         <dependency>
@@ -50,53 +50,36 @@
             <artifactId>vertigo-studio</artifactId>
             <version>${vertigo.version}</version>
         </dependency>
-
-		<!-- test-->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
+        
+        
+        <dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>9.4.18.v20190429</version>
 		</dependency>
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
-			<version>0.9.5.2</version>
+			<version>0.9.5.4</version>
+		</dependency>
+
+		<!-- test-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.5.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.1.4</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.5.2</version>
 			<scope>test</scope>
 		</dependency>
     </dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.5.0</version>
-				<executions>
-					<execution>
-						<id>java</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>io.vertigo.studio.tools.NameSpace2Java</mainClass>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${basedir}/src/main/resources</additionalClasspathElement>
-					</additionalClasspathElements>
-					<arguments>
-						<argument>/mda/applicationConfiguration.properties</argument>
-					</arguments>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -115,30 +98,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>src/main/javagen</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
-<!-- 			<plugin> -->
-<!-- 	           <groupId>org.apache.maven.plugins</groupId> -->
-<!--                              <artifactId>vertigo-maven-dependency-plugin</artifactId> -->
-<!-- 	                     <version>3.0.0</version> -->
-<!-- 	                <executions> -->
-<!-- 	                  <execution> -->
-<!-- 	                     <phase>compile</phase> -->
-<!-- 	                        <goals> -->
-<!-- 	                          <goal>tree</goal> -->
-<!-- 	                        </goals> -->
-<!-- 	                   </execution> -->
-<!-- 	               </executions> -->
-<!-- 	              </plugin> -->
 		</plugins>
 		<pluginManagement>
 			<plugins>
