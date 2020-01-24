@@ -2,7 +2,7 @@ package io.vertigo.starterkit;
 
 import io.vertigo.core.node.config.DefinitionProviderConfig;
 import io.vertigo.core.node.config.discovery.ModuleDiscoveryFeatures;
-import io.vertigo.dynamo.ngdomain.NewModelDefinitionProvider;
+import io.vertigo.datamodel.smarttype.NewModelDefinitionProvider;
 import io.vertigo.starterkit.boot.VegaStarterKitSmartTypes;
 import io.vertigo.starterkit.boot.VegaStarterMasterDataInitializer;
 
