@@ -4,7 +4,7 @@
 
   <groupId>io.vertigo</groupId>
   <artifactId>vertigo-vega-archetype</artifactId>
-  <version>3.0.0-RC</version>
+  <version>3.0.0</version>
   <packaging>maven-archetype</packaging>
 
   <name>vertigo-vega-archetype</name>
