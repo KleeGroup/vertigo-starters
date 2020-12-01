@@ -1,0 +1,13 @@
+resources: 
+  - { type: kpr, path: src/main/resources/${packageInPathFormat}/application.kpr}
+mdaConfig:
+  projectPackageName: ${package}
+  targetGenDir : src/main/
+  properties: 
+    vertigo.domain.java: true
+    vertigo.domain.java.generateDtResources: false
+    vertigo.domain.sql: true
+    vertigo.domain.sql.targetSubDir: javagen/sqlgen
+    vertigo.domain.sql.baseCible: PotsgreSql
+    vertigo.domain.sql.generateDrop: true
+    vertigo.task: true

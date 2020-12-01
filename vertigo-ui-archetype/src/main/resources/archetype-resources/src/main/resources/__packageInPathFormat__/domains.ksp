@@ -1,0 +1,21 @@
+package ${package}
+
+create Domain DoId {
+	dataType : Long
+	storeType : "NUMERIC"
+}
+
+create Domain DoLabel {
+	dataType : String
+	storeType : "VARCHAR(100)"
+}
+
+create Domain DoLabelLong {
+	dataType : String
+	storeType : "VARCHAR(500)"
+}
+
+create Domain DoYear {
+	dataType : Integer
+	storeType : "NUMERIC"
+}
